@@ -27,7 +27,8 @@ public class Passenger extends Account {
 //    @Valid
 //    private Address billingAddress;
 
-    private String payment;
+    @Embedded
+    private Address address;
 
 
 
