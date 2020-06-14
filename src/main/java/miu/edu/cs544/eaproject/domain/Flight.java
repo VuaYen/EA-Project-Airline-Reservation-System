@@ -23,11 +23,9 @@ public class Flight {
     private Integer capacity;
 
     @ManyToOne
-//    @Column(name = "departureAirport_id")
     private Airport departureAirport;
 
     @ManyToOne
-//    @Column(name = "arivalAirport_id")
     private Airport arivalAirport;
 
     @ManyToOne

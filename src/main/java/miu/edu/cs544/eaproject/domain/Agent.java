@@ -19,7 +19,6 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-//@NoArgsConstructor
 @Entity
 @DiscriminatorValue("AGENT")
 @JsonInclude(JsonInclude.Include.NON_NULL)
