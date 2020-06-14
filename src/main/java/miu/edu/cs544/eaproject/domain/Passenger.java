@@ -23,10 +23,6 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Passenger extends Account {
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name="addressId")
-//    @Valid
-//    private Address billingAddress;
     private Date DOB; //Date of birth
 
     @Embedded
