@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -18,6 +17,17 @@ public class Ticket {
     @Id
     private Integer id;
     private String number;
-    private String reservationCode;
+    @OneToOne
+//    @Column(name = "reservationCode")
+    private Reservation reservation;
+
     private Date flightdate;
+
+    @ManyToOne
+//    @Column(name = "flight_id")
+    private Flight flight;
+
+    @ManyToOne
+//    @Column(name = "passenger_id")
+    private Passenger passenger;
 }

@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -26,14 +27,25 @@ public class Passenger extends Account {
 //    @JoinColumn(name="addressId")
 //    @Valid
 //    private Address billingAddress;
+    private Date DOB; //Date of birth
 
     @Embedded
     private Address address;
 
+    @OneToMany (mappedBy = "passenger")
+    private List<Reservation> reservations;
+
+    @OneToMany (mappedBy = "passenger")
+    private List<Ticket> tickets;
 
 
-    public Passenger(String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty @Email String email) {
+
+
+    public Passenger(String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName,Date DOB, @NotEmpty @Email String email,Address address) {
         super(username, password, firstName, lastName,  email);
+        this.DOB= DOB;
+        this.address=address;
+
     }
 
 
