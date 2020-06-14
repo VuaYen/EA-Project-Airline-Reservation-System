@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login").successHandler(new MyAuthenticationSuccessHandler())
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login").invalidateHttpSession(true)
-                .and().csrf().ignoringAntMatchers("/h2-console/**")
+//                .and().csrf().ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().sameOrigin()
                 .and().exceptionHandling().accessDeniedPage("/access-denied")
                 .and().rememberMe().key("uniqueAndSecret")

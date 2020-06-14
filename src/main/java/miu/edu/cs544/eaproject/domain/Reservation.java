@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 @Entity
 @AllArgsConstructor
@@ -17,8 +18,8 @@ import javax.persistence.ManyToOne;
 @Setter
 public class Reservation {
     @Id
-    private Integer id;
-    private Integer code;
+    @Size(min = 6, max = 6, message = "{error.size}")
+    private String code;
 
     @ManyToOne
     private Flight flight;
