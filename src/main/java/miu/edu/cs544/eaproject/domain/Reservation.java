@@ -21,11 +21,9 @@ public class Reservation {
     private Integer code;
 
     @ManyToOne
-//    @Column(name = "flight_id")
     private Flight flight;
 
     @ManyToOne
-//    @Column(name = "passenger_id")
     private Passenger passenger;
 
 }

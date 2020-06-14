@@ -18,16 +18,13 @@ public class Ticket {
     private Integer id;
     private String number;
     @OneToOne
-//    @Column(name = "reservationCode")
     private Reservation reservation;
 
     private Date flightdate;
 
     @ManyToOne
-//    @Column(name = "flight_id")
     private Flight flight;
 
     @ManyToOne
-//    @Column(name = "passenger_id")
     private Passenger passenger;
 }
