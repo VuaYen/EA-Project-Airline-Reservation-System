@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -20,6 +21,9 @@ public class Reservation {
     @Id
     @Size(min = 6, max = 6, message = "{error.size}")
     private String code;
+
+    private ReservationStatus status;
+    private Date createdDate;
 
     @ManyToOne
     private Flight flight;
