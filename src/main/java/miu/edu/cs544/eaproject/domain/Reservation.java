@@ -31,4 +31,7 @@ public class Reservation {
     @ManyToOne
     private Passenger passenger;
 
+    @ManyToOne
+    private Account createdBy;
+
 }

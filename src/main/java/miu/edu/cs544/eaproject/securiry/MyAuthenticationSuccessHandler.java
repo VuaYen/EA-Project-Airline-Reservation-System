@@ -47,7 +47,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         Map<String, String> roleTargetUrlMap = new HashMap<>();
         roleTargetUrlMap.put("ROLE_PASSENGER", "/");
         roleTargetUrlMap.put("ROLE_ADMIN", "/admin");
-        roleTargetUrlMap.put("ROLE_AGENT", "/agent/airports");
+        roleTargetUrlMap.put("ROLE_AGENT", "/agent");
 
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
