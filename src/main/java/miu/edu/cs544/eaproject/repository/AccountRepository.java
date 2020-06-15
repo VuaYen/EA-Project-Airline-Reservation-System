@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AccountRepository<T extends Account> extends CrudRepository<T, String> {
-
+public interface AccountRepository<T extends Account> extends CrudRepository<T, Long> {
+//    Account findByUserName(String userName);
 }
 

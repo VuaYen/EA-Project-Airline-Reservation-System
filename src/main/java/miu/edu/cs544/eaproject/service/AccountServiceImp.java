@@ -3,7 +3,7 @@ package miu.edu.cs544.eaproject.service;
 import miu.edu.cs544.eaproject.domain.Account;
 import miu.edu.cs544.eaproject.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -29,10 +29,10 @@ public class AccountServiceImp implements AccountService {
             return false;
         }
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String password = account.getPassword();
-        String encryptedPassword = encoder.encode(password);
-        account.setPassword(encryptedPassword);
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        String password = account.getPassword();
+//        String encryptedPassword = encoder.encode(password);
+//        account.setPassword(encryptedPassword);
 
         T createdAcc = (T)accountRepository.save(account);
 
