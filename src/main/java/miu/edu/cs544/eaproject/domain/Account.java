@@ -25,7 +25,7 @@ public class Account {
     @JsonIgnore
     @Column(nullable = false)
     @NotEmpty(message = "{error.string.empty}")
-//    @NotNull
+//  @NotNull
     @Size(min = 6, message = "{error.password.size}")
     private String password;
 
