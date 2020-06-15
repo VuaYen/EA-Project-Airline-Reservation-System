@@ -41,7 +41,6 @@ public class Account {
     private String lastName;
 
 
-
     @NotEmpty(message = "{error.string.empty}")
 //    @NotNull
     @Column(nullable = false)

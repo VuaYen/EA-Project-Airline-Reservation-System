@@ -27,4 +27,6 @@ public class Reservation {
     @ManyToOne
     private Passenger passenger;
 
+
+
 }
