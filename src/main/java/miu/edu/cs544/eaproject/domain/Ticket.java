@@ -20,7 +20,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size( min = 20, max = 20, message = "{error.size}")
+    @Size(min = 20, max = 20, message = "{error.size}")
     private String number;
 
     @OneToOne

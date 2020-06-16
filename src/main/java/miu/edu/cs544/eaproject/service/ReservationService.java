@@ -15,5 +15,5 @@ public interface ReservationService {
     public Reservation getReservationByCode(String code);
     public List<Ticket> confirmReservation(List<String> flightCodes, Integer passenger_ID);
     public List<Ticket> confirmReservation(List<String> flightCodes);
-
+    List<Reservation> getReservationsByPassengerId(Integer id);
 }

@@ -1,5 +1,6 @@
 package miu.edu.cs544.eaproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,12 @@ import java.util.Date;
 @Table(name = "flight")
 public class Flight {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @NotEmpty(message = "{error.string.empty}")
     private String number;
+
     private Integer capacity;
 
     @ManyToOne
@@ -31,6 +35,7 @@ public class Flight {
     private Airport arivalAirport;
 
     @ManyToOne
+    @JsonIgnore
     private Airline airline;
 
     @Column(name = "departure_time")

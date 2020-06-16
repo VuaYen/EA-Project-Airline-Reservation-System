@@ -1,14 +1,24 @@
 package miu.edu.cs544.eaproject.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @SecondaryTable(name = "History")
 @Table(name = "airline")
 public class Airline {
     @Id
-    private  Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String code;
 

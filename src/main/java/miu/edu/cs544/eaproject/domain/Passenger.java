@@ -34,13 +34,10 @@ public class Passenger extends Account {
 //    @OneToMany (mappedBy = "passenger")
 //    private List<Ticket> tickets;
 
-
-
-
-    public Passenger(String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName,Date DOB, @NotEmpty @Email String email,Address address) {
-        super(username, password, firstName, lastName,  email);
-        this.DOB= DOB;
-        this.address=address;
+    public Passenger(int id, String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, Date DOB, @NotEmpty @Email String email, Address address) {
+        super(id, username, password, firstName, lastName, email);
+        this.DOB = DOB;
+        this.address = address;
 
     }
 

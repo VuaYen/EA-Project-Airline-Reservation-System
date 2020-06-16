@@ -1,5 +1,6 @@
 package miu.edu.cs544.eaproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Reservation {
     @Column(name = "created_by", columnDefinition = "bigint unsigned")
     private Integer createdBy;
 
-
+    @ManyToOne
+    private Account createdBy;
 
 }

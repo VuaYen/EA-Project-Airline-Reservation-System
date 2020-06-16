@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AirlineRepository extends CrudRepository<Airline,Integer> {
-//    public Airline getByFlight(Flight fly);
-//    public List<Airline> getAirlinesByFlights(List<Flight> flights);
+public interface AirlineRepository extends CrudRepository<Airline, Integer> {
+    List<Airline> findAirlinesByFlightsDepartureAirportCode(String Code);
 }

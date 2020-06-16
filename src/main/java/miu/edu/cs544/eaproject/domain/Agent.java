@@ -24,7 +24,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Agent extends Account {
 
-    public Agent(String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty @Email String email) {
-        super(username, password, firstName, lastName,  email);
+    public Agent(int id, String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty @Email String email) {
+        super(id, username, password, firstName, lastName, email);
     }
 }

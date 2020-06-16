@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface AirlineService {
     public List<Airline> viewAirlines();
+    List<Airline> getAirlinesByFlightsDepartureAirportCode(String code);
 }
