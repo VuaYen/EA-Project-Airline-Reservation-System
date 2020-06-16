@@ -9,4 +9,5 @@ import java.util.List;
 public interface FlightService {
     public List<Flight> viewAllFlights();
     public List<Airline> viewAllFlightsOutAirport(String airportcode);
+    public Flight getFlightById(Integer flightId);
 }

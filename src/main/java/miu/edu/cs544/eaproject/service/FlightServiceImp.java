@@ -39,4 +39,11 @@ public class FlightServiceImp implements FlightService{
         return StreamSupport.stream(iterable.spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Flight getFlightById(Integer flightId) {
+        if(flightRepository.findById(flightId).isPresent())
+            return flightRepository.findById(flightId).get();
+        return null;
+    }
 }

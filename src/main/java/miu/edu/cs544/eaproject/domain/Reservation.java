@@ -26,10 +26,12 @@ public class Reservation {
     @ManyToOne
     private Flight flight;
 
-    @ManyToOne
-    private Passenger passenger;
+    @Column(name = "passenger_ID", columnDefinition = "bigint unsigned")
+    private Integer passengerID;
 
-    @ManyToOne
-    private Account createdBy;
+    @Column(name = "created_by", columnDefinition = "bigint unsigned")
+    private Integer createdBy;
+
+
 
 }
