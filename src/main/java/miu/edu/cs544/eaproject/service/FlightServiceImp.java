@@ -33,8 +33,10 @@ public class FlightServiceImp implements FlightService{
     @Override
     public List<Airline> viewAllFlightsOutAirport(String airportcode) {
         Airport airport= airportRepository.findByCode(airportcode);
+
         List<Flight> flights= toList(flightRepository.findAllByDepartureAirport(airport));
         List<Airline> results= new ArrayList<>();
+//        results=toList(airlineRepository.findAll()).forEach();
         for (Flight f: flights
              ) {
             results.add(f.getAirline());
