@@ -24,4 +24,9 @@ public class AirlineServiceImp implements AirlineService{
         return StreamSupport.stream(iterable.spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Airline> getAirlinesByFlightsDepartureAirportCode(String code) {
+        return airlineRepository.findAirlinesByFlightsDepartureAirportCode(code);
+    }
 }

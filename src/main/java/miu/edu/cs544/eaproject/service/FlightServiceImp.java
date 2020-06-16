@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -55,5 +56,10 @@ public class FlightServiceImp implements FlightService{
         if(flightRepository.findById(flightId).isPresent())
             return flightRepository.findById(flightId).get();
         return null;
+    }
+
+    @Override
+    public List<Flight> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime) {
+        return flightRepository.findFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(departureAirportCode, arivalAirportCode, departureTime);
     }
 }
