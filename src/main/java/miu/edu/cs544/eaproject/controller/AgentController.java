@@ -74,4 +74,5 @@ public class AgentController {
         return flightService.viewAllFlightsOutAirport(code);
     }
 
+
 }
