@@ -1,9 +1,11 @@
-INSERT INTO `account` VALUES ('ADMIN', 'admin', 'thepham@miu.edu', 'Admin', 'Mr', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `account` VALUES ('PASSENGER', 'thepham', 'thepham@miu.edu', 'The', 'Pham', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `account` VALUES ('AGENT', 'yafet', 'yhabtemichael@miu.edu', 'Yafet', 'Habtem', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `account` VALUES ('PASSENGER', 'chinguyen', 'ch.nguyen@miu.edu', 'Chi', 'Nguyen', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `account` VALUES ('AGENT', 'robel', 'yrteferi@miu.edu', 'Robel', 'Teferi', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `account` VALUES ('AGENT', 'andrew', 'aqolta@miu.edu', 'Andrew', 'Qolta', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `account` (`account_type`, `ID`, `email`, `firstname`, `lastname`, `password`, `username`, `DOB`, `city`, `state`, `street`, `zip`)
+VALUES
+	('ADMIN', 1, 'thepham@miu.edu', 'Admin', 'Mr', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'admin', NULL, NULL, NULL, NULL, NULL),
+	('PASSENGER', 2, 'thepham@miu.edu', 'The', 'Pham', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'thepham', NULL, NULL, NULL, NULL, NULL),
+	('AGENT', 3, 'yhabtemichael@miu.edu', 'Yafet', 'Habtem', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'yafet', NULL, NULL, NULL, NULL, NULL),
+	('PASSENGER', 4, 'ch.nguyen@miu.edu', 'Chi', 'Nguyen', '$2a$08$qvrzQZ7jJ7oy2p/msL4M0.l83Cd0jNsX6AJUitbgRXGzge4j035ha', 'chinguyen', NULL, NULL, NULL, NULL, NULL),
+	('AGENT', 5, 'yrteferi@miu.edu', 'Robel', 'Teferi', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'robel', NULL, NULL, NULL, NULL, NULL),
+	('AGENT', 6, 'aqolta@miu.edu', 'Andrew', 'Qolta', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'andrew', NULL, NULL, NULL, NULL, NULL);
 
 INSERT INTO `airline` (`id`, `code`, `name`)
 VALUES
