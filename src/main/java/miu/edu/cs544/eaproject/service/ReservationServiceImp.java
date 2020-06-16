@@ -145,6 +145,6 @@ public class ReservationServiceImp implements ReservationService {
 
     @Override
     public List<Reservation> getReservationsByPassengerId(Integer id) {
-        return reservationRepository.findReservationsByPassengerId(id);
+        return reservationRepository.findReservationsByPassengerID(id);
     }
 }
