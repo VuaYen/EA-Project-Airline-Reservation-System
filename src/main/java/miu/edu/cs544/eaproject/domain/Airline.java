@@ -1,13 +1,23 @@
 package miu.edu.cs544.eaproject.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @SecondaryTable(name = "History")
 public class Airline {
     @Id
-    private  Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String code;
 
@@ -16,7 +26,6 @@ public class Airline {
     @Column(table = "History", length = 2000, nullable = true)
     private String history; //optional field with a maximum length of 2000 characters
 
-    @OneToMany (mappedBy = "airline")
-    @Column(name = "flight_id")
+    @OneToMany(mappedBy = "airline")
     private List<Flight> flights;
 }

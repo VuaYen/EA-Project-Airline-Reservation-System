@@ -16,9 +16,10 @@ import java.util.Date;
 @Setter
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size( min = 20, max = 20, message = "{error.size}")
+    @Size(min = 20, max = 20, message = "{error.size}")
     private String number;
     @OneToOne
     private Reservation reservation;

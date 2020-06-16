@@ -15,7 +15,9 @@ import javax.validation.constraints.Size;
 @Setter
 public class Airport {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Size(min = 3, max = 3, message = "{error.size}")
     private String code;
     private String name;
