@@ -28,8 +28,8 @@ public class Passenger extends Account {
     @Embedded
     private Address address;
 
-    @OneToMany (mappedBy = "passenger")
-    private List<Reservation> reservations;
+//    @OneToMany (mappedBy = "passenger")
+//    private List<Reservation> reservations;
 
     @OneToMany (mappedBy = "passenger")
     private List<Ticket> tickets;
