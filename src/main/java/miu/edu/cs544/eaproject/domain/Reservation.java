@@ -32,8 +32,4 @@ public class Reservation {
 
     @Column(name = "created_by", columnDefinition = "bigint unsigned")
     private Integer createdBy;
-
-    @ManyToOne
-    private Account createdBy;
-
 }
