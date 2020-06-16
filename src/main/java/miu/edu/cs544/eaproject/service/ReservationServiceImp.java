@@ -3,6 +3,7 @@ package miu.edu.cs544.eaproject.service;
 import miu.edu.cs544.eaproject.domain.Flight;
 import miu.edu.cs544.eaproject.domain.Reservation;
 import miu.edu.cs544.eaproject.domain.ReservationStatus;
+import miu.edu.cs544.eaproject.domain.Ticket;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
 import miu.edu.cs544.eaproject.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,16 @@ import java.util.stream.StreamSupport;
 public class ReservationServiceImp implements ReservationService {
 
     private static final Integer RESERVATION_CODE_LENGTH = 6;
+    private static final String RESERVATION_CODE_STRING = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     @Autowired
     private ReservationRepository reservationRepository;
 
     @Autowired
     private FlightService flightService;
+
+    @Autowired
+    private TicketService ticketService;
 
     public List<Reservation> createListReservation(List<Integer> flightIds, Integer passenger_ID, Integer created_by) {
 
@@ -70,8 +75,38 @@ public class ReservationServiceImp implements ReservationService {
         return null;
     }
 
+    @Override
+    public List<Ticket> confirmReservation(List<String> reservationCodes, Integer passenger_ID) {
+        List<Ticket> tickets = new ArrayList<>();
+        for ( String reservationCode: reservationCodes) {
+            Reservation reservation = this.getReservationByCode(reservationCode);
+            if(reservation != null) {
+                if(!reservation.getPassengerID().equals(passenger_ID)) {
+                    throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
+                }
+
+                if(!reservation.getStatus().equals(ReservationStatus.New)) {
+                    throw new NotAcceptableException("Reservation code " + reservationCode + " is confirmed!" );
+                }
+
+                tickets.add(this.ticketService.createTicket(reservation));
+                reservation.setStatus(ReservationStatus.Accept);
+            }
+            else {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!" );
+            }
+        }
+
+        return tickets;
+    }
+
+    @Override
+    public List<Ticket> confirmReservation(List<String> flightCodes) {
+        return null;
+    }
+
     private String generateReservationCode() {
-        String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        String AB = RESERVATION_CODE_STRING;
         SecureRandom rnd = new SecureRandom();
         StringBuilder sb = new StringBuilder( RESERVATION_CODE_LENGTH );
         for( int i = 0; i < RESERVATION_CODE_LENGTH; i++ )

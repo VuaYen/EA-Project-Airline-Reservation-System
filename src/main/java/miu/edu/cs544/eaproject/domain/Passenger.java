@@ -31,8 +31,8 @@ public class Passenger extends Account {
 //    @OneToMany (mappedBy = "passenger")
 //    private List<Reservation> reservations;
 
-    @OneToMany (mappedBy = "passenger")
-    private List<Ticket> tickets;
+//    @OneToMany (mappedBy = "passenger")
+//    private List<Ticket> tickets;
 
 
 
