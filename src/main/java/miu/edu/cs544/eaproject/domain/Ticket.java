@@ -14,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "ticket")
 public class Ticket {
     @Id
     private Integer id;

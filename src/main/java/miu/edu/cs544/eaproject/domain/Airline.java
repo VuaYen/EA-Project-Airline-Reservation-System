@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@SecondaryTable(name = "History")
+@SecondaryTable(name = "history")
+@Table(name = "airline")
 public class Airline {
     @Id
     private  Integer id;

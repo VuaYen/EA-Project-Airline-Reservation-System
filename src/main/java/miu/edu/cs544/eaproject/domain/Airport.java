@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "airport")
 public class Airport {
     @Id
     private Integer id;
