@@ -17,10 +17,12 @@ import java.util.Date;
 @Table(name = "ticket")
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Size( min = 20, max = 20, message = "{error.size}")
     private String number;
+
     @OneToOne
     private Reservation reservation;
 
@@ -29,6 +31,6 @@ public class Ticket {
     @ManyToOne
     private Flight flight;
 
-    @ManyToOne
-    private Passenger passenger;
+    @Column(name = "passenger_ID", columnDefinition = "bigint unsigned")
+    private Integer passengerID;
 }
