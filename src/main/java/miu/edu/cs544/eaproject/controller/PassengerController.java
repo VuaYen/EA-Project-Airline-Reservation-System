@@ -1,7 +1,7 @@
 package miu.edu.cs544.eaproject.controller;
 
-import miu.edu.cs544.eaproject.domain.Airport;
-import miu.edu.cs544.eaproject.service.AirportService;
+import miu.edu.cs544.eaproject.domain.*;
+import miu.edu.cs544.eaproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,10 +18,52 @@ public class PassengerController {
     @Autowired
     private AirportService airportService;
 
+    @Autowired
+    private FlightService flightService;
+
+    @Autowired
+    private TicketService ticketService;
+
+    @Autowired
+    private ReservationService reservationService;
+
+    @Autowired
+    private AirlineService airlineService;
+
     @GetMapping(value = {"", "/"})
     public List<Airport> getAllAirports()
     {
         return airportService.viewAirports();
+    }
+
+    @GetMapping("/airports")
+    public List<Airport> getAllAirports1()
+    {
+        return airportService.viewAirports();
+    }
+
+    @GetMapping("/flights")
+    public List<Flight> getAllFlights()
+    {
+        return flightService.viewAllFlights();
+    }
+
+    @GetMapping("/airlines")
+    public List<Airline> getAllAirlines()
+    {
+        return airlineService.viewAirlines();
+    }
+
+    @GetMapping("/reservations")
+    public List<Reservation> getAllReservations()
+    {
+        return reservationService.viewReservations();
+    }
+
+    @GetMapping("/tickets")
+    public List<Ticket> getAllTickets()
+    {
+        return ticketService.viewTickets();
     }
 
 }
