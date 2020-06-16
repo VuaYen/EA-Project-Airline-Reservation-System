@@ -6,6 +6,7 @@ import miu.edu.cs544.eaproject.domain.ReservationStatus;
 import miu.edu.cs544.eaproject.domain.Ticket;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
 import miu.edu.cs544.eaproject.repository.ReservationRepository;
+import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,37 +36,50 @@ public class ReservationServiceImp implements ReservationService {
     @Autowired
     private TicketService ticketService;
 
+    @Override
     public List<Reservation> createListReservation(List<Integer> flightIds, Integer passenger_ID, Integer created_by) {
 
         List<Reservation> reservations = new ArrayList<>();
 
         for (int flightId : flightIds) {
-            Flight flight = flightService.getFlightById(flightId);
-            if(flight != null) {
-                Reservation reservation = new Reservation();
-                String code = this.generateReservationCode();
-
-                reservation.setCode(code);
-                reservation.setStatus(ReservationStatus.New);
-                reservation.setFlight(flight);
-                reservation.setCreatedBy(created_by);
-                reservation.setPassengerID(passenger_ID);
-                reservation.setCreatedDate(new Date());
-
-                this.createReservation(reservation);
-                reservations.add(reservation);
-            } else {
-                throw new NotAcceptableException("Flight id " + flightId + " does not found!" );
-            }
+            reservations.add(this.createReservation(flightId, passenger_ID, created_by));
         }
 
         return reservations;
     }
 
+    @Override
+    public List<Reservation> createListReservationByAgent(List<AgentReservationCreateRequest> agentReservationRequests, Integer created_by) {
+        List<Reservation> reservations = new ArrayList<>();
+
+        for (AgentReservationCreateRequest agentReservationRequest : agentReservationRequests) {
+            reservations.add(this.createReservation(agentReservationRequest.getFlightId(), agentReservationRequest.getPassengerId(), created_by));
+        }
+
+        return reservations;
+    }
 
     @Override
-    public Reservation createReservation(Reservation reservation) {
-        return this.reservationRepository.save(reservation);
+    public Reservation createReservation(Integer flightId, Integer passenger_ID, Integer created_by) {
+        Reservation reservation = null;
+        Flight flight = flightService.getFlightById(flightId);
+        if(flight != null) {
+            reservation = new Reservation();
+            String code = this.generateReservationCode();
+
+            reservation.setCode(code);
+            reservation.setStatus(ReservationStatus.New);
+            reservation.setFlight(flight);
+            reservation.setCreatedBy(created_by);
+            reservation.setPassengerID(passenger_ID);
+            reservation.setCreatedDate(new Date());
+
+            this.reservationRepository.save(reservation);
+        } else {
+            throw new NotAcceptableException("Flight id " + flightId + " does not found!" );
+        }
+
+        return reservation;
     }
 
     @Override
@@ -76,12 +90,12 @@ public class ReservationServiceImp implements ReservationService {
     }
 
     @Override
-    public List<Ticket> confirmReservation(List<String> reservationCodes, Integer passenger_ID) {
+    public List<Ticket> confirmReservation(List<String> reservationCodes, Integer current_user_ID) {
         List<Ticket> tickets = new ArrayList<>();
         for ( String reservationCode: reservationCodes) {
             Reservation reservation = this.getReservationByCode(reservationCode);
             if(reservation != null) {
-                if(!reservation.getPassengerID().equals(passenger_ID)) {
+                if(!reservation.getPassengerID().equals(current_user_ID) && !current_user_ID.equals(0)) {
                     throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
                 }
 

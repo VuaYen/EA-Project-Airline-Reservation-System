@@ -6,6 +6,7 @@ import miu.edu.cs544.eaproject.domain.Ticket;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
 import miu.edu.cs544.eaproject.service.AirportService;
 import miu.edu.cs544.eaproject.service.ReservationService;
+import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
 import org.aspectj.lang.NoAspectBoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,4 +41,24 @@ public class ReservationController {
         tickets = reservationService.confirmReservation(flightCodes, currentUserId);
         return tickets;
     }
+
+    @PostMapping(value = {"/agent/create"})
+    public List<Reservation> agentReservations(@RequestBody List<AgentReservationCreateRequest> listReservation) {
+        List<Reservation> reservations = new ArrayList<>();
+        int currentUserId = 1;
+        for (AgentReservationCreateRequest agentReservationRequest:
+                listReservation) {
+            System.out.println(agentReservationRequest.getFlightId());
+        }
+        reservations = reservationService.createListReservationByAgent(listReservation, currentUserId);
+        return reservations;
+    }
+
+    @PostMapping(value = {"/agent/confirm"})
+    public List<Ticket> agentConfirmReservations(@RequestBody List<String> flightCodes) {
+        List<Ticket> tickets = new ArrayList<>();
+        tickets = reservationService.confirmReservation(flightCodes, 0);
+        return tickets;
+    }
+
 }
