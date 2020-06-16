@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@SecondaryTable(name = "history")
+@SecondaryTable(name = "History")
 @Table(name = "airline")
 public class Airline {
     @Id
@@ -18,6 +18,6 @@ public class Airline {
     private String history; //optional field with a maximum length of 2000 characters
 
     @OneToMany (mappedBy = "airline")
-    @Column(name = "flight_id")
+//    @Column(name = "flight_id")
     private List<Flight> flights;
 }
