@@ -28,11 +28,11 @@ public class Passenger extends Account {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "passenger")
-    private List<Reservation> reservations;
+//    @OneToMany (mappedBy = "passenger")
+//    private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "passenger")
-    private List<Ticket> tickets;
+//    @OneToMany (mappedBy = "passenger")
+//    private List<Ticket> tickets;
 
     public Passenger(int id, String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, Date DOB, @NotEmpty @Email String email, Address address) {
         super(id, username, password, firstName, lastName, email);

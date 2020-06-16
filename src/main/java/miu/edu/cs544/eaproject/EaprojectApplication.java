@@ -8,9 +8,12 @@ import miu.edu.cs544.eaproject.repository.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+//@ComponentScan({"miu.edu.cs544.eaproject.controller","miu.edu.cs544.eaproject.service","miu.edu.cs544.eaproject.repository"})
 public class EaprojectApplication {
 
     public static void main(String[] args) {

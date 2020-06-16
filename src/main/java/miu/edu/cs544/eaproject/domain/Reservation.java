@@ -15,11 +15,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "reservation")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     @Size(min = 6, max = 6, message = "{error.size}")
     private String code;
 
@@ -29,9 +27,11 @@ public class Reservation {
     @ManyToOne
     private Flight flight;
 
-    @ManyToOne
-    @JsonIgnore
-    private Passenger passenger;
+    @Column(name = "passenger_ID", columnDefinition = "bigint unsigned")
+    private Integer passengerID;
+
+    @Column(name = "created_by", columnDefinition = "bigint unsigned")
+    private Integer createdBy;
 
     @ManyToOne
     private Account createdBy;

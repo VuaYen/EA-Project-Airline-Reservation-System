@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AirportRepository extends CrudRepository<Airport,Integer> {
+    public Airport findByCode(String code);
 }

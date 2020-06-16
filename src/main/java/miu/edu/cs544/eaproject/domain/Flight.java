@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "flight")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,18 +25,22 @@ public class Flight {
     private String number;
 
     private Integer capacity;
-    private Date departureTime;
-    private Date arivalTime;
 
     @ManyToOne
+    @JoinColumn(name = "departure_airport_id")
     private Airport departureAirport;
 
     @ManyToOne
+    @JoinColumn(name = "arival_airport_id")
     private Airport arivalAirport;
 
     @ManyToOne
     @JsonIgnore
     private Airline airline;
 
+    @Column(name = "departure_time")
+    private Date departureTime;
 
+    @Column(name = "arival_time")
+    private Date arivalTime;
 }
