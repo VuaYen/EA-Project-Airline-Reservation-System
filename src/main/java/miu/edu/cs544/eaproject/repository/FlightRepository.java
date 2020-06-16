@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface FlightRepository extends CrudRepository<Flight,Integer> {
-    public List<Airline> findAllAirLineByDepartureAirport(Airport airport);
+    public List<Flight> findAllByDepartureAirport(Airport airport);
 }

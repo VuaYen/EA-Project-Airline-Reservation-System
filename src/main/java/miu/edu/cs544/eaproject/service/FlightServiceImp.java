@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -32,7 +33,14 @@ public class FlightServiceImp implements FlightService{
     @Override
     public List<Airline> viewAllFlightsOutAirport(String airportcode) {
         Airport airport= airportRepository.findByCode(airportcode);
-        return toList(flightRepository.findAllAirLineByDepartureAirport(airport));
+        List<Flight> flights= toList(flightRepository.findAllByDepartureAirport(airport));
+        List<Airline> results= new ArrayList<>();
+        for (Flight f: flights
+             ) {
+            results.add(f.getAirline());
+
+        }
+        return results;
     }
 
     public static <T> List<T> toList(final Iterable<T> iterable) {
