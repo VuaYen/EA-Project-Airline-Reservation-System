@@ -142,4 +142,9 @@ public class ReservationServiceImp implements ReservationService {
         return StreamSupport.stream(iterable.spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Reservation> getReservationsByPassengerId(Integer id) {
+        return reservationRepository.findReservationsByPassengerId(id);
+    }
 }
