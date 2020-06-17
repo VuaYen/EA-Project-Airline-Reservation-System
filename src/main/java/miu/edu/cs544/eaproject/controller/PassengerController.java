@@ -59,6 +59,12 @@ public class PassengerController {
         return reservationService.viewReservations();
     }
 
+    @GetMapping("/reservations/{code}")
+    public Reservation viewDetailReservationById(@PathVariable(name = "code") String code) throws Exception
+    {
+        return reservationService.getReservationByCode(code);
+    }
+
     @GetMapping("/tickets")
     public List<Ticket> getAllTickets()
     {
