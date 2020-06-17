@@ -6,11 +6,9 @@ import miu.edu.cs544.eaproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -72,6 +70,17 @@ public class AgentController {
     public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception
     {
         return flightService.viewAllFlightsOutAirport(code);
+    }
+    @GetMapping("/findFlightsByDepartureAndDestinationForDate")
+    public List<Flight> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
+                                                                   @RequestParam String AACode,
+                                                                   @RequestParam Date departureTime) {
+        return flightService.getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(DACode, AACode, departureTime);
+    }
+
+    @GetMapping("/findReservationsByPassengerId/{id}")
+    public List<Reservation> getReservationsByPassengerId(@PathVariable Integer id) {
+        return reservationService.getReservationsByPassengerId(id);
     }
 
 
