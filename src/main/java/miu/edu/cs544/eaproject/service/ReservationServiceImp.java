@@ -147,4 +147,13 @@ public class ReservationServiceImp implements ReservationService {
     public List<Reservation> getReservationsByPassengerId(Integer id) {
         return reservationRepository.findReservationsByPassengerID(id);
     }
+
+    @Override
+    public List<Reservation> getReservationsCreatedByAgent(Integer agentNumber) {
+
+
+        return reservationRepository.findByCreatedBy(agentNumber);
+    }
+
+
 }
