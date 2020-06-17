@@ -88,4 +88,10 @@ public class PassengerController {
         return reservationService.getReservationsByPassengerId(id);
     }
 
+    @GetMapping("/myreservation")
+    public List<Reservation> getMyReservations() {
+        Integer userid=2;
+        return reservationService.getReservationsCreateBy(userid);
+    }
+
 }

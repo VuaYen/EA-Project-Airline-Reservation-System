@@ -8,9 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AccountRepository<T extends Account> extends CrudRepository<T, Long> {
 //    Account findByUserName(String userName);
+//    public Optional<Account> findByUserName(String userName);
 }
 
