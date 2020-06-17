@@ -97,7 +97,7 @@ public class ReservationServiceImp implements ReservationService {
         for ( String reservationCode: reservationCodes) {
             Reservation reservation = this.getReservationByCode(reservationCode);
             if(reservation != null) {
-                if(!reservation.getPassengerID().equals(current_user_ID) && !current_user_ID.equals(0)) {
+                if(!reservation.getCreatedBy().equals(current_user_ID)) {
                     throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
                 }
 
@@ -116,9 +116,25 @@ public class ReservationServiceImp implements ReservationService {
         return tickets;
     }
 
-    @Override
-    public List<Ticket> confirmReservation(List<String> flightCodes) {
-        return null;
+    public boolean cancelReservations(String reservationCode, Integer current_user_ID) {
+        Reservation reservation = this.getReservationByCode(reservationCode);
+
+        if(reservation != null) {
+            if(!reservation.getCreatedBy().equals(current_user_ID)) {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
+            }
+
+            if(reservation.getStatus().equals(ReservationStatus.Cancel)) {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " is canceled!" );
+            }
+            this.ticketService.removeTicket(reservationCode);
+            reservation.setStatus(ReservationStatus.Cancel);
+            this.reservationRepository.save(reservation);
+            return true;
+        }
+        else {
+            throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!" );
+        }
     }
 
     private String generateReservationCode() {
