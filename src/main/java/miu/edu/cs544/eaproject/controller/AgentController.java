@@ -83,5 +83,11 @@ public class AgentController {
         return reservationService.getReservationsByPassengerId(id);
     }
 
+    @GetMapping("/viewlistairlinesflightoutairport/{code}")
+    public List<Airline> viewListAirlinesFlightoutairport(@PathVariable(name = "code") String code) throws Exception
+    {
+        return flightService.viewAllFlightsOutAirport(code);
+    }
+
 
 }
