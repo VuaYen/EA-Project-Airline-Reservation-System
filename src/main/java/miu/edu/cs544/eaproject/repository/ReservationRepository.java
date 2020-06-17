@@ -12,4 +12,5 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation, String> {
     List<Reservation> findReservationsByPassengerID(Integer id);
     List<Reservation> findReservationsByCreatedBy(Integer createdBy);
+//    Reservation findReservationByIdAndCreatedBy(String code,Integer createdBy);
 }

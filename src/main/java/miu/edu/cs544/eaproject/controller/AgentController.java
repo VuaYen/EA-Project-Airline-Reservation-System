@@ -59,6 +59,16 @@ public class AgentController {
     {
         return reservationService.viewReservations();
     }
+    @GetMapping("/reservations/{code}")
+    public Reservation viewDetailReservationById(@PathVariable(name = "code") String code) throws Exception
+    {
+        //check this reservation by this agent.
+        Integer currentAgentid=3;
+        if (reservationService.getReservationByCode(code).getCreatedBy()==currentAgentid)
+            return reservationService.getReservationByCode(code);
+        else
+            return null;
+    }
 
     @GetMapping("/tickets")
     public List<Ticket> getAllTickets()
@@ -81,6 +91,12 @@ public class AgentController {
     @GetMapping("/findReservationsByPassengerId/{id}")
     public List<Reservation> getReservationsByPassengerId(@PathVariable Integer id) {
         return reservationService.getReservationsByPassengerId(id);
+    }
+
+    @GetMapping("/myreservation")
+    public List<Reservation> getMyReservations() {
+        Integer userid=2;
+        return reservationService.getReservationsCreateBy(userid);
     }
 
 
