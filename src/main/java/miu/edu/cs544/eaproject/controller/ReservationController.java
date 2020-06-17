@@ -34,7 +34,7 @@ public class ReservationController {
         return reservations;
     }
 
-    @PostMapping(value = {"/passenger/confirm"})
+    @PostMapping(value = {"/confirm"})
     public List<Ticket> confirmReservations(@RequestBody List<String> flightCodes) {
         List<Ticket> tickets = new ArrayList<>();
         int currentUserId = 1;
@@ -52,13 +52,6 @@ public class ReservationController {
         }
         reservations = reservationService.createListReservationByAgent(listReservation, currentUserId);
         return reservations;
-    }
-
-    @PostMapping(value = {"/agent/confirm"})
-    public List<Ticket> agentConfirmReservations(@RequestBody List<String> flightCodes) {
-        List<Ticket> tickets = new ArrayList<>();
-        tickets = reservationService.confirmReservation(flightCodes, 0);
-        return tickets;
     }
 
     @GetMapping("/{code}")

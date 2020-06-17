@@ -14,6 +14,5 @@ public interface ReservationService {
     public List<Reservation> createListReservationByAgent(List<AgentReservationCreateRequest> agentReservationRequests, Integer created_by);
     public Reservation getReservationByCode(String code);
     public List<Ticket> confirmReservation(List<String> flightCodes, Integer passenger_ID);
-    public List<Ticket> confirmReservation(List<String> flightCodes);
     List<Reservation> getReservationsByPassengerId(Integer id);
 }
