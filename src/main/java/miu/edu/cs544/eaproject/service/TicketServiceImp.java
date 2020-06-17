@@ -42,6 +42,12 @@ public class TicketServiceImp implements TicketService {
         return ticket;
     }
 
+    @Override
+    public void removeTicket(String reservationCode) {
+        Ticket ticket = this.ticketRepository.findByReservationCode(reservationCode);
+        this.ticketRepository.delete(ticket);
+    }
+
     public static <T> List<T> toList(final Iterable<T> iterable) {
         return StreamSupport.stream(iterable.spliterator(), false)
                 .collect(Collectors.toList());

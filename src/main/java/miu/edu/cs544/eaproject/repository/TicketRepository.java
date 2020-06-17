@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TicketRepository extends CrudRepository<Ticket,Integer> {
     Ticket findByNumber(String number);
+    Ticket findByReservationCode(String code);
 }
