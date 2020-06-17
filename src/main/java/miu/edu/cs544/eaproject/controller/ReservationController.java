@@ -61,4 +61,9 @@ public class ReservationController {
         return tickets;
     }
 
+    @GetMapping("/{code}")
+    public Reservation viewReservationsDetails(@PathVariable String code) {
+        return reservationService.getReservationByCode(code);
+    }
+
 }
