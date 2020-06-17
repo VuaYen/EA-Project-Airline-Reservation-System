@@ -1,5 +1,6 @@
 package miu.edu.cs544.eaproject.controller;
 
+import miu.edu.cs544.eaproject.domain.User;
 import miu.edu.cs544.eaproject.integration.Jwt;
 import miu.edu.cs544.eaproject.service.UserService;
 import miu.edu.cs544.eaproject.service.dto.AuthRequest;
@@ -13,6 +14,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -51,5 +54,12 @@ public class UserController {
 	public Boolean deleteUser(@PathVariable long userId) throws Exception {
 
 		return userService.deleteUser(userId);
+	}
+
+	@GetMapping(value = {"", "/"})
+	@Secured({ "ROLE_ADMIN" })
+	public List<User> getListUsers()
+	{
+		return userService.viewListUser();
 	}
 }
