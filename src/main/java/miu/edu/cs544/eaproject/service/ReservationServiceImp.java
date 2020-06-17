@@ -1,10 +1,9 @@
 package miu.edu.cs544.eaproject.service;
 
-import miu.edu.cs544.eaproject.domain.Flight;
-import miu.edu.cs544.eaproject.domain.Reservation;
-import miu.edu.cs544.eaproject.domain.ReservationStatus;
-import miu.edu.cs544.eaproject.domain.Ticket;
+import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
+import miu.edu.cs544.eaproject.repository.AccountRepository;
+import miu.edu.cs544.eaproject.repository.AccountRepository1;
 import miu.edu.cs544.eaproject.repository.ReservationRepository;
 import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,9 @@ public class ReservationServiceImp implements ReservationService {
 
     @Autowired
     private TicketService ticketService;
+
+    @Autowired
+    private AccountService accountService;
 
     @Override
     public List<Reservation> createListReservation(List<Integer> flightIds, Integer passenger_ID, Integer created_by) {
@@ -162,5 +164,11 @@ public class ReservationServiceImp implements ReservationService {
     @Override
     public List<Reservation> getReservationsByPassengerId(Integer id) {
         return reservationRepository.findReservationsByPassengerID(id);
+    }
+
+
+    @Override
+    public List<Reservation> getReservationsCreateBy(Integer userid) {
+        return toList(reservationRepository.findReservationsByCreatedBy(userid));
     }
 }
