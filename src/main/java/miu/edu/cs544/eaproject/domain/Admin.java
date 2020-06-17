@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 @DiscriminatorValue("ADMIN")
 public class Admin extends Account {
-    public Admin(String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty @Email String email) {
-        super(username, password, firstName, lastName,  email);
+    public Admin(int id, String username, @NotEmpty @NotNull String password, @NotEmpty String firstName, @NotEmpty String lastName, @NotEmpty @Email String email) {
+        super(id, username, password, firstName, lastName, email);
     }
 
 

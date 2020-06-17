@@ -1,16 +1,13 @@
 package miu.edu.cs544.eaproject.repository;
 
-import miu.edu.cs544.eaproject.domain.Account;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+import miu.edu.cs544.eaproject.domain.Airline;
+import miu.edu.cs544.eaproject.domain.Flight;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface AirlineRepository<T extends Account> extends CrudRepository<T, String> {
-
+public interface AirlineRepository extends CrudRepository<Airline, Integer> {
+    List<Airline> findAirlinesByFlightsDepartureAirportCode(String Code);
 }
-
