@@ -3,6 +3,7 @@ package miu.edu.cs544.eaproject.service;
 import miu.edu.cs544.eaproject.domain.Reservation;
 import miu.edu.cs544.eaproject.domain.Ticket;
 import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
+import miu.edu.cs544.eaproject.service.response.PassengerReservationsResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,6 @@ public interface ReservationService {
     public Reservation getReservationByCode(String code);
     public List<Ticket> confirmReservation(List<String> flightCodes, Integer current_user_ID);
     public boolean cancelReservations(String code, Integer current_user_ID);
-    List<Reservation> getReservationsByPassengerId(Integer id);
+    List<PassengerReservationsResponse> getReservationsByPassengerId(Integer id);
     List<Reservation> getReservationsCreateBy(Integer userid);
 }

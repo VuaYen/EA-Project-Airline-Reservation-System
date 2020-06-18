@@ -1,8 +1,6 @@
 package miu.edu.cs544.eaproject.service.mapper;
 
-import miu.edu.cs544.eaproject.domain.Airline;
 import miu.edu.cs544.eaproject.domain.Airport;
-import miu.edu.cs544.eaproject.service.response.AirlineResponse;
 import miu.edu.cs544.eaproject.service.response.AirportResponse;
 
 public class AirportMapper {
