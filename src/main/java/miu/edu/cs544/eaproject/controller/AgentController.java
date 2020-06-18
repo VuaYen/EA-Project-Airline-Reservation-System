@@ -83,8 +83,8 @@ public class AgentController {
         return reservationService.getReservationsByPassengerId(id);
     }
 
-    @GetMapping("/getReservationsCreatedByAgentOnly/{agentNumber}")
-    public List<Reservation> getReservationsCreatedByAgentOnly(@PathVariable Integer agentNumber) {
+    @GetMapping("/getReservationsCreatedByAgent/{agentNumber}")
+    public List<Reservation> getReservationsCreatedByAgent(@PathVariable Integer agentNumber) {
         return reservationService.getReservationsCreatedByAgent(agentNumber);
     }
 }
