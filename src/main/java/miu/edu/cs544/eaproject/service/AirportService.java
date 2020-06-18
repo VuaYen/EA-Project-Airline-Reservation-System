@@ -1,16 +1,17 @@
 package miu.edu.cs544.eaproject.service;
 
 import miu.edu.cs544.eaproject.domain.Airport;
+import miu.edu.cs544.eaproject.service.response.AirportResponse;
 
 import java.security.PublicKey;
 import java.util.List;
 
 public interface AirportService {
-    List<Airport> getAllAirports();
+    List<AirportResponse> getAllAirports();
 
-    Airport getAirportById(Integer id);
+    AirportResponse getAirportById(Integer id);
 
-    Airport createOrUpdateAirport(Airport airport);
+    AirportResponse createOrUpdateAirport(Airport airport);
 
     void deleteAirportById(Integer id);
 }

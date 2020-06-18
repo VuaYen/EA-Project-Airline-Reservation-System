@@ -7,7 +7,9 @@ import miu.edu.cs544.eaproject.exception.RecordNotFoundException;
 import miu.edu.cs544.eaproject.repository.AirlineRepository;
 import miu.edu.cs544.eaproject.repository.AirportRepository;
 import miu.edu.cs544.eaproject.repository.FlightRepository;
+import miu.edu.cs544.eaproject.service.mapper.FlightMapper;
 import miu.edu.cs544.eaproject.service.request.FlightCreateRequest;
+import miu.edu.cs544.eaproject.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,18 +32,18 @@ public class FlightServiceImp implements FlightService {
     private AirportRepository airportRepository;
 
     @Override
-    public List<Flight> getAllFlights() {
+    public List<FlightResponse> getAllFlights() {
         List<Flight> flightList = (List<Flight>) flightRepository.findAll();
 
         if (flightList.size() > 0) {
-            return flightList;
+            return flightList.stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
         } else {
-            return new ArrayList<Flight>();
+            return new ArrayList<Flight>().stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
         }
     }
 
     @Override
-    public Flight createOrUpdateFlight(FlightCreateRequest entity) throws RecordNotFoundException {
+    public FlightResponse createOrUpdateFlight(FlightCreateRequest entity) throws RecordNotFoundException {
         Optional<Flight> flight = flightRepository.findById(entity.getId());
         Flight newEntity;
         if (flight.isPresent()) {
@@ -55,11 +57,11 @@ public class FlightServiceImp implements FlightService {
         newEntity.setArivalTime(entity.getArivalTime());
         newEntity.setAirline(airlineRepository.findById(entity.getAirlineId()).get());
         newEntity.setDepartureAirport(airportRepository.findById(entity.getDepartureAirportId()).get());
-        Integer fff=entity.getArivalAirportId();
+        Integer fff = entity.getArivalAirportId();
         newEntity.setArivalAirport(airportRepository.findById(fff).get());
 
         newEntity = flightRepository.save(newEntity);
-        return newEntity;
+        return FlightMapper.mapToFlightResponse(newEntity);
     }
 
     @Override
@@ -79,11 +81,8 @@ public class FlightServiceImp implements FlightService {
 
         List<Flight> flights = toList(flightRepository.findAllByDepartureAirport(airport));
         List<Airline> results = new ArrayList<>();
-//        results=toList(airlineRepository.findAll()).forEach();
-        for (Flight f : flights
-        ) {
+        for (Flight f : flights) {
             results.add(f.getAirline());
-
         }
         return results;
     }
@@ -94,18 +93,18 @@ public class FlightServiceImp implements FlightService {
     }
 
     @Override
-    public Flight getFlightById(Integer flightId) {
+    public FlightResponse getFlightById(Integer flightId) {
         Optional<Flight> flight = flightRepository.findById(flightId);
 
         if (flight.isPresent()) {
-            return flight.get();
+            return FlightMapper.mapToFlightResponse(flight.get());
         } else {
             throw new RecordNotFoundException("No flight record exist for given id");
         }
     }
 
     @Override
-    public List<Flight> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime) {
-        return flightRepository.findFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(departureAirportCode, arivalAirportCode, departureTime);
+    public List<FlightResponse> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime) {
+        return flightRepository.findFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(departureAirportCode, arivalAirportCode, departureTime).stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
     }
 }
