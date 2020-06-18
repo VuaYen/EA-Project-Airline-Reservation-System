@@ -1,20 +1,13 @@
 package miu.edu.cs544.eaproject.controller;
 
-import miu.edu.cs544.eaproject.domain.Airport;
 import miu.edu.cs544.eaproject.domain.Reservation;
 import miu.edu.cs544.eaproject.domain.Ticket;
-import miu.edu.cs544.eaproject.exception.NotAcceptableException;
-import miu.edu.cs544.eaproject.service.AirportService;
 import miu.edu.cs544.eaproject.service.ReservationService;
 import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
-import org.aspectj.lang.NoAspectBoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +27,22 @@ public class ReservationController {
         return reservations;
     }
 
-    @PostMapping(value = {"/passenger/confirm"})
+    @PutMapping(value = {"/confirm"})
     public List<Ticket> confirmReservations(@RequestBody List<String> flightCodes) {
         List<Ticket> tickets = new ArrayList<>();
         int currentUserId = 1;
         tickets = reservationService.confirmReservation(flightCodes, currentUserId);
         return tickets;
+    }
+
+    @PutMapping(value = {"/cancel/{code}"})
+    public ResponseEntity<String> cancelReservations(@PathVariable String code) {
+        List<Ticket> tickets = new ArrayList<>();
+        int currentUserId = 1;
+        if(reservationService.cancelReservations(code, currentUserId)) {
+            return ResponseEntity.status(HttpStatus.OK).body("The reservation " + code + " is canceled!");
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The reservation " + code + " can not canceled!");
     }
 
     @PostMapping(value = {"/agent/create"})
@@ -54,11 +57,9 @@ public class ReservationController {
         return reservations;
     }
 
-    @PostMapping(value = {"/agent/confirm"})
-    public List<Ticket> agentConfirmReservations(@RequestBody List<String> flightCodes) {
-        List<Ticket> tickets = new ArrayList<>();
-        tickets = reservationService.confirmReservation(flightCodes, 0);
-        return tickets;
+    @GetMapping("/{code}")
+    public Reservation viewReservationsDetails(@PathVariable String code) {
+        return reservationService.getReservationByCode(code);
     }
 
 }

@@ -13,7 +13,8 @@ public interface ReservationService {
     public List<Reservation> createListReservation(List<Integer> flightIds, Integer passenger_ID, Integer created_by);
     public List<Reservation> createListReservationByAgent(List<AgentReservationCreateRequest> agentReservationRequests, Integer created_by);
     public Reservation getReservationByCode(String code);
-    public List<Ticket> confirmReservation(List<String> flightCodes, Integer passenger_ID);
-    public List<Ticket> confirmReservation(List<String> flightCodes);
+    public List<Ticket> confirmReservation(List<String> flightCodes, Integer current_user_ID);
+    public boolean cancelReservations(String code, Integer current_user_ID);
     List<Reservation> getReservationsByPassengerId(Integer id);
+    List<Reservation> getReservationsCreateBy(Integer userid);
 }

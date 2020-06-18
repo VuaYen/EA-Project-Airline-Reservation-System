@@ -4,6 +4,7 @@ import miu.edu.cs544.eaproject.domain.Account;
 import miu.edu.cs544.eaproject.domain.Admin;
 import miu.edu.cs544.eaproject.domain.Agent;
 import miu.edu.cs544.eaproject.domain.Passenger;
+import org.modelmapper.ModelMapper;
 import miu.edu.cs544.eaproject.repository.AccountRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,6 +34,10 @@ public class EaprojectApplication {
 //            accountRepository.save(admin);
 //
         };
+    }
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
 }

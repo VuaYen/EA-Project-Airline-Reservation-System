@@ -1,10 +1,9 @@
 package miu.edu.cs544.eaproject.service;
 
-import miu.edu.cs544.eaproject.domain.Flight;
-import miu.edu.cs544.eaproject.domain.Reservation;
-import miu.edu.cs544.eaproject.domain.ReservationStatus;
-import miu.edu.cs544.eaproject.domain.Ticket;
+import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
+import miu.edu.cs544.eaproject.repository.AccountRepository;
+import miu.edu.cs544.eaproject.repository.AccountRepository1;
 import miu.edu.cs544.eaproject.repository.ReservationRepository;
 import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,9 @@ public class ReservationServiceImp implements ReservationService {
 
     @Autowired
     private TicketService ticketService;
+
+    @Autowired
+    private AccountService accountService;
 
     @Override
     public List<Reservation> createListReservation(List<Integer> flightIds, Integer passenger_ID, Integer created_by) {
@@ -95,7 +97,7 @@ public class ReservationServiceImp implements ReservationService {
         for ( String reservationCode: reservationCodes) {
             Reservation reservation = this.getReservationByCode(reservationCode);
             if(reservation != null) {
-                if(!reservation.getPassengerID().equals(current_user_ID) && !current_user_ID.equals(0)) {
+                if(!reservation.getCreatedBy().equals(current_user_ID)) {
                     throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
                 }
 
@@ -114,9 +116,25 @@ public class ReservationServiceImp implements ReservationService {
         return tickets;
     }
 
-    @Override
-    public List<Ticket> confirmReservation(List<String> flightCodes) {
-        return null;
+    public boolean cancelReservations(String reservationCode, Integer current_user_ID) {
+        Reservation reservation = this.getReservationByCode(reservationCode);
+
+        if(reservation != null) {
+            if(!reservation.getCreatedBy().equals(current_user_ID)) {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
+            }
+
+            if(reservation.getStatus().equals(ReservationStatus.Cancel)) {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " is canceled!" );
+            }
+            this.ticketService.removeTicket(reservationCode);
+            reservation.setStatus(ReservationStatus.Cancel);
+            this.reservationRepository.save(reservation);
+            return true;
+        }
+        else {
+            throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!" );
+        }
     }
 
     private String generateReservationCode() {
@@ -146,5 +164,11 @@ public class ReservationServiceImp implements ReservationService {
     @Override
     public List<Reservation> getReservationsByPassengerId(Integer id) {
         return reservationRepository.findReservationsByPassengerID(id);
+    }
+
+
+    @Override
+    public List<Reservation> getReservationsCreateBy(Integer userid) {
+        return toList(reservationRepository.findReservationsByCreatedBy(userid));
     }
 }
