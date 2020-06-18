@@ -22,7 +22,7 @@ public class ReservationController {
     @PostMapping(value = {"/passenger/create"})
     public List<Reservation> reservations(@RequestBody List<Integer> flightIds) {
         List<Reservation> reservations = new ArrayList<>();
-        int currentUserId = 1;
+        int currentUserId = 20;
         reservations = reservationService.createListReservation(flightIds, currentUserId, currentUserId);
         return reservations;
     }
@@ -30,7 +30,7 @@ public class ReservationController {
     @PutMapping(value = {"/confirm"})
     public List<Ticket> confirmReservations(@RequestBody List<String> flightCodes) {
         List<Ticket> tickets = new ArrayList<>();
-        int currentUserId = 1;
+        int currentUserId = 20;
         tickets = reservationService.confirmReservation(flightCodes, currentUserId);
         return tickets;
     }
@@ -38,7 +38,7 @@ public class ReservationController {
     @PutMapping(value = {"/cancel/{code}"})
     public ResponseEntity<String> cancelReservations(@PathVariable String code) {
         List<Ticket> tickets = new ArrayList<>();
-        int currentUserId = 1;
+        int currentUserId = 20;
         if(reservationService.cancelReservations(code, currentUserId)) {
             return ResponseEntity.status(HttpStatus.OK).body("The reservation " + code + " is canceled!");
         }
