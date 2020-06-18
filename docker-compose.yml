@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+
+  project-mysql:
+    container_name: cs544-project-mysql
+    image: cytopia/mysql-5.6
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: cs544
+      MYSQL_USER: root
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
