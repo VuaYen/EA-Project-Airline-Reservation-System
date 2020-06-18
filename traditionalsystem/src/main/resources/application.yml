@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: sample-springdata-service
+    admin:
+      enabled: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/cs544g81?serverTimezone=America/Chicago
+    username: eagroup8
+    password: eagroup8
+    driverClassName: com.mysql.cj.jdbc.Driver
+  #  data: classpath:/data.sql
+  #  initialization-mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
