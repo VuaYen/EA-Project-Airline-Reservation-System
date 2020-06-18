@@ -2,14 +2,11 @@ package miu.edu.cs544.eaproject.service;
 
 import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
-import miu.edu.cs544.eaproject.repository.AccountRepository;
-import miu.edu.cs544.eaproject.repository.AccountRepository1;
 import miu.edu.cs544.eaproject.repository.FlightRepository;
 import miu.edu.cs544.eaproject.repository.ReservationRepository;
 import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
+import miu.edu.cs544.eaproject.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,13 +31,10 @@ public class ReservationServiceImp implements ReservationService {
     private FlightService flightService;
 
     @Autowired
-    private FlightRepository flightRepository;
-
-    @Autowired
     private TicketService ticketService;
 
     @Autowired
-    private AccountService accountService;
+    private PassengerService passengerService;
 
     @Override
     public List<Reservation> createListReservation(List<Integer> flightIds, Integer passenger_ID, Integer created_by) {
@@ -68,7 +62,7 @@ public class ReservationServiceImp implements ReservationService {
     @Override
     public Reservation createReservation(Integer flightId, Integer passenger_ID, Integer created_by) {
         Reservation reservation = null;
-        Flight flight = flightRepository.findById(flightId).get();
+        Flight flight = flightService.getFlightEntityById(flightId);
         if(flight != null) {
             reservation = new Reservation();
             String code = this.generateReservationCode();
@@ -77,7 +71,7 @@ public class ReservationServiceImp implements ReservationService {
             reservation.setStatus(ReservationStatus.New);
             reservation.setFlight(flight);
             reservation.setCreatedBy(created_by);
-            reservation.setPassengerID(passenger_ID);
+            reservation.setPassenger(this.passengerService.getPassengerById(passenger_ID));
             reservation.setCreatedDate(new Date());
 
             this.reservationRepository.save(reservation);
@@ -167,7 +161,7 @@ public class ReservationServiceImp implements ReservationService {
 
     @Override
     public List<Reservation> getReservationsByPassengerId(Integer id) {
-        return reservationRepository.findReservationsByPassengerID(id);
+        return reservationRepository.findByPassenger_Id(id);
     }
 
 

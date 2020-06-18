@@ -104,6 +104,11 @@ public class FlightServiceImp implements FlightService {
     }
 
     @Override
+    public Flight getFlightEntityById(Integer flightId) {
+        return flightRepository.findById(flightId).get();
+    }
+
+    @Override
     public List<FlightResponse> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime) {
         return flightRepository.findFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(departureAirportCode, arivalAirportCode, departureTime).stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
     }

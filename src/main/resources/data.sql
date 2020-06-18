@@ -1,12 +1,3 @@
-INSERT INTO `account` (`account_type`, `ID`, `email`, `firstname`, `lastname`, `password`, `username`, `DOB`, `city`, `state`, `street`, `zip`)
-VALUES
-	('ADMIN', 1, 'thepham@miu.edu', 'Admin', 'Mr', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'admin', NULL, NULL, NULL, NULL, NULL),
-	('PASSENGER', 2, 'thepham@miu.edu', 'The', 'Pham', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'thepham', NULL, NULL, NULL, NULL, NULL),
-	('AGENT', 3, 'yhabtemichael@miu.edu', 'Yafet', 'Habtem', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'yafet', NULL, NULL, NULL, NULL, NULL),
-	('PASSENGER', 4, 'ch.nguyen@miu.edu', 'Chi', 'Nguyen', '$2a$08$qvrzQZ7jJ7oy2p/msL4M0.l83Cd0jNsX6AJUitbgRXGzge4j035ha', 'chinguyen', NULL, NULL, NULL, NULL, NULL),
-	('AGENT', 5, 'yrteferi@miu.edu', 'Robel', 'Teferi', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'robel', NULL, NULL, NULL, NULL, NULL),
-	('AGENT', 6, 'aqolta@miu.edu', 'Andrew', 'Qolta', '$2b$10$QwKk5pHK1RhFfeFqPiaGx.7XHD/B5Y2LbxtkRJVKVOTZhezdRacwa', 'andrew', NULL, NULL, NULL, NULL, NULL);
-
 INSERT INTO `airline` (`id`, `code`, `name`)
 VALUES
 	(1, 'AAL', 'American Airlines'),
@@ -226,24 +217,132 @@ VALUES
 	('pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In ornare sagittis felis. Donec tempor, est ac mattis semper, dui lectus rutrum urna, nec luctus felis purus ac tellus.', 35),
 	('facilisis. Suspendisse commodo tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor lorem, eget mollis lectus pede et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor. Fusce feugiat.', 36),
 	('Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend egestas. Sed pharetra, felis eget varius ultrices, mauris ipsum porta elit, a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus pede sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam', 37);
-INSERT INTO `role` VALUES (1, ''ADMIN'');
-INSERT INTO `role` VALUES (2, ''AGENT'');
-INSERT INTO `role` VALUES (3, ''PASSENGER'');
 
-INSERT INTO `user` VALUES (1, ''admin@miu.edu'', ''admin'', ''Male'', ''admin'', ''123456'', ''admin'');
-INSERT INTO `user` VALUES (2, ''thepham@miu.edu'', ''admin'', ''Male'', ''admin'', ''123456'', ''thepham'');
-INSERT INTO `user` VALUES (3, ''yhabtemichael@miu.edu'', ''Agent'', ''Male'', ''agent'', ''123456'', ''yafet'');
-INSERT INTO `user` VALUES (4, ''ch.nguyen@miu.edu'', ''Passenger'', ''Male'', ''passenger'', ''123456'', ''chinguyen'');
-INSERT INTO `user` VALUES (5, ''yrteferi@miu.edu'', ''admin'', ''Male'', ''admin'', ''123456'', ''robel'');
-INSERT INTO `user` VALUES (6, ''aqolta@miu.edu'', ''Passenger'', ''Male'', ''passenger'', ''123456'', ''andrew'');
-INSERT INTO `user` VALUES (7, ''agent@miu.edu'', ''Agent'', ''Male'', ''agent'', ''123456'', ''agent'');
-INSERT INTO `user` VALUES (8, ''passenger@miu.edu'', ''Passenger'', ''Male'', ''passenger'', ''123456'', ''passenger'');
+INSERT INTO `passenger` (`id`, `DOB`, `city`, `state`, `street`, `zip`, `email`, `name`, `phone`)
+VALUES
+	(20, '1989-01-18 00:19:29.000000', 'Matamata', 'NI', '299-8166 Ante Av.', '381036', 'elementum@senectusetnetus.net', 'Ezra Meadows', '1-667-359-6216'),
+	(21, '1979-07-11 23:29:56.000000', 'Rockville', 'MD', '1618 Vivamus Rd.', '6065 FD', 'Proin.eget.odio@eleifendCrassed.co.uk', 'Colby Whitaker', '1-433-189-2885'),
+	(22, '1974-06-02 23:22:00.000000', 'Vienna', 'Vienna', '361-5901 Tristique Av.', '56180', 'Maecenas.mi@sitamet.net', 'Alan Ray', '1-455-635-0072'),
+	(23, '2003-11-02 06:02:33.000000', 'Brunn am Gebirge', 'NÖ.', '535-8239 Quam. Avenue', '80984', 'sem.eget@sapienimperdiet.ca', 'Axel Jackson', '1-693-227-5346'),
+	(24, '2006-03-14 01:45:54.000000', 'East Kilbride', 'LK', 'Ap #335-728 Natoque Road', 'DS90 6WI', 'tristique.pharetra.Quisque@dolor.net', 'Bert Hodges', '1-994-882-0779'),
+	(25, '1995-12-12 16:25:26.000000', 'Muiden', 'Noord Holland', '712-5986 Sapien, Road', '06696', 'amet@vehiculaaliquet.net', 'Mechelle Forbes', '1-526-897-4377'),
+	(26, '2006-01-25 01:29:05.000000', 'Oaxaca', 'Oax', '867-9159 Morbi Rd.', '5847', 'tincidunt@maurisMorbinon.edu', 'Charlotte Vega', '1-981-343-1788'),
+	(27, '1975-03-25 05:00:53.000000', 'Carmen', 'Cartago', 'P.O. Box 864, 2154 Fusce Ave', '2513', 'dolor@in.net', 'Slade Blankenship', '1-176-334-2575'),
+	(28, '1973-07-12 13:36:37.000000', 'Borlänge', 'Dalarnas län', '1383 Ante Road', '8363', 'aliquam.eu.accumsan@at.com', 'Carl Harris', '1-626-609-6767'),
+	(29, '1996-09-24 02:32:57.000000', 'Bangor', 'Maine', 'P.O. Box 512, 3333 Augue St.', '633272', 'metus.Aenean@necmetusfacilisis.com', 'Fiona Cole', '1-751-705-3245'),
+	(30, '1972-11-18 00:30:21.000000', 'Baie-Comeau', 'QC', 'Ap #315-533 Neque St.', '7159', 'sit.amet.risus@elita.com', 'Hadassah Pollard', '1-947-831-6893'),
+	(31, '1994-09-19 05:32:04.000000', 'Accadia', 'Puglia', 'Ap #880-642 Fermentum Rd.', '97901-544', 'et.rutrum@cursus.co.uk', 'Slade Levy', '1-893-437-2450'),
+	(32, '1973-07-20 09:59:56.000000', 'Shawinigan', 'QC', '430-4416 Non Rd.', '31114-38508', 'Nullam.vitae@uteros.com', 'Cecilia Watkins', '1-353-776-3565'),
+	(33, '1987-05-07 06:11:39.000000', 'Vezzi Portio', 'LIG', '6840 Mauris Av.', 'K9T 8S7', 'purus.Nullam.scelerisque@erat.ca', 'Elliott Murray', '1-174-132-6082'),
+	(34, '1982-11-13 08:56:50.000000', 'Hillsboro', 'OR', '772-286 Etiam Rd.', 'P9W 2E1', 'metus.eu.erat@pharetra.co.uk', 'Ayanna Carson', '1-840-954-5416'),
+	(35, '2001-01-27 10:04:24.000000', 'Scarborough', 'ON', '3085 Integer Rd.', '546948', 'Lorem.ipsum@adui.edu', 'Sylvester Beck', '1-604-406-3953'),
+	(36, '1972-09-17 08:06:11.000000', 'Novgorod', 'NGR', 'P.O. Box 449, 3533 Blandit Avenue', '4815', 'tincidunt@nec.ca', 'Brandon Weber', '1-775-535-4666'),
+	(37, '1985-08-13 03:35:32.000000', 'Narowal', 'Punjab', '6673 Ante Rd.', '55188', 'arcu@sedorci.co.uk', 'Amal Dominguez', '1-114-893-2763'),
+	(38, '1980-10-06 08:22:22.000000', 'Saintes', 'PO', 'Ap #469-9744 Cras Av.', '2817', 'non@mollisduiin.com', 'Ina Carr', '1-412-568-9544'),
+	(39, '1999-04-05 13:31:35.000000', 'Las Vegas', 'Nevada', 'Ap #149-7214 Lectus Ave', '805630', 'sed.pede@Curae.co.uk', 'Winter Cervantes', '1-664-110-8770'),
+	(40, '2005-02-02 04:23:01.000000', 'Promo-Control', 'WB', 'P.O. Box 921, 9945 Vel, St.', '08442', 'sit@neque.edu', 'Baxter Barry', '1-788-919-0358'),
+	(41, '1993-05-18 20:41:01.000000', 'Weesp', 'Noord Holland', 'Ap #493-5282 Sit Rd.', '809080', 'risus.In.mi@metus.edu', 'Emmanuel Freeman', '1-641-222-9421'),
+	(42, '2003-11-03 00:42:00.000000', 'Dublin', 'Leinster', '804-5808 Vestibulum Rd.', '15796', 'Cras@blanditNamnulla.ca', 'Audra Hebert', '1-412-256-8243'),
+	(43, '2003-02-15 16:08:07.000000', 'Tomaszów Mazowiecki', 'LD', 'P.O. Box 716, 6185 Aenean St.', '49200', 'eu@sapien.net', 'Sybil Giles', '1-304-605-1546'),
+	(44, '1972-01-19 22:43:35.000000', 'Iksan', 'Jeo', 'P.O. Box 596, 5527 Cras Rd.', '01471-87181', 'nulla.vulputate@magnisdis.edu', 'Stacy Calderon', '1-637-532-7423'),
+	(45, '1996-09-04 06:26:53.000000', 'Vienna', 'Vienna', '8631 Quisque Avenue', '100275', 'rutrum.magna.Cras@egestasAliquam.edu', 'Nissim Hoffman', '1-226-754-6537'),
+	(46, '1978-11-29 10:36:51.000000', 'Alingsås', 'Västra Götalands län', 'P.O. Box 219, 1850 Scelerisque, Rd.', '28-256', 'Vivamus@elit.org', 'Emi Becker', '1-477-802-6181'),
+	(47, '1971-01-23 09:55:22.000000', 'Okene', 'Kogi', '8121 Dapibus Avenue', '334977', 'ultricies.sem.magna@mauris.edu', 'Palmer Roy', '1-873-272-1594'),
+	(48, '1984-08-09 05:16:46.000000', 'Ciudad Madero', 'Tam', '110-8504 Leo. Rd.', '3097', 'tellus@neque.org', 'Lareina Bass', '1-791-126-5620'),
+	(49, '2004-07-19 06:02:10.000000', 'Zaria', 'KD', 'Ap #951-9062 Scelerisque Rd.', '41020', 'Quisque@dolorelitpellentesque.net', 'Allegra Mason', '1-436-135-0206'),
+	(50, '2005-10-18 08:05:12.000000', 'Mathura', 'Uttar Pradesh', '9123 Nulla Street', '23-679', 'leo@nullaatsem.net', 'Nathaniel Pruitt', '1-832-310-3195'),
+	(51, '2003-05-13 12:02:21.000000', 'Cincinnati', 'OH', 'P.O. Box 467, 4128 Lacus Avenue', '8517', 'aliquet@PraesentluctusCurabitur.ca', 'Benjamin Barnett', '1-390-622-7476'),
+	(52, '2000-10-24 10:37:46.000000', 'Bremen', 'HB', 'P.O. Box 393, 329 Suspendisse Ave', '749513', 'cursus@mauris.edu', 'Zachary Christensen', '1-456-752-3154'),
+	(53, '1981-04-27 07:17:30.000000', 'Guadalupe', 'N.L', '790-4097 Eu, Road', '9981', 'dolor@idante.edu', 'Abbot Bruce', '1-755-169-8821'),
+	(54, '1984-06-05 20:15:46.000000', 'Seydi?ehir', 'Kon', '264-4343 Neque St.', '3708', 'id@Nuncmauris.net', 'Vielka Terrell', '1-254-517-3903'),
+	(55, '1989-09-13 04:12:40.000000', 'Awaran', 'Balochistan', 'P.O. Box 475, 3968 Enim St.', '105542', 'arcu.vel@cursus.org', 'Aladdin Carson', '1-295-377-9946'),
+	(56, '1974-06-07 21:00:22.000000', 'Manukau', 'North Island', '1375 Nulla St.', '71705', 'amet.risus.Donec@Donecsollicitudin.com', 'Baker Hartman', '1-961-575-8344'),
+	(57, '1999-10-30 03:26:58.000000', 'Bukittinggi', 'West Sumatra', '2143 Risus. Road', '996724', 'accumsan.laoreet.ipsum@auguescelerisquemollis.edu', 'James Wynn', '1-127-974-0311'),
+	(58, '1983-07-26 14:03:39.000000', 'Whitburn', 'WL', 'Ap #547-8951 Aenean Av.', '09474', 'vel.mauris@dapibus.co.uk', 'Felicia Estes', '1-858-359-4298'),
+	(59, '1973-03-04 06:02:43.000000', 'Juazeiro', 'Bahia', '766-3264 Turpis. St.', '212300', 'cubilia.Curae.Phasellus@orcilacusvestibulum.co.uk', 'Olivia Quinn', '1-123-140-7769'),
+	(60, '2005-09-19 14:59:13.000000', 'Vienna', 'Wie', '7803 Ipsum Rd.', 'VD1G 4NJ', 'Nullam@rhoncusDonecest.org', 'Iris Garcia', '1-466-511-2384'),
+	(61, '1992-03-25 09:44:00.000000', 'Asigliano Veneto', 'Veneto', 'Ap #320-1441 Scelerisque St.', '27908-133', 'sapien.Aenean@dolor.ca', 'Mufutau Thomas', '1-674-283-4425'),
+	(62, '1978-01-30 02:27:54.000000', 'Mexico City', 'CDM', 'P.O. Box 266, 8237 In Avenue', '0946', 'Aliquam@hendrerit.org', 'Flavia Faulkner', '1-599-499-3515'),
+	(63, '1987-12-15 22:46:17.000000', 'Delicias', 'Chihuahua', 'P.O. Box 247, 9640 Nascetur Av.', '98389', 'vitae.mauris@turpis.net', 'Armand Lambert', '1-680-420-3972'),
+	(64, '1979-11-18 18:14:59.000000', 'Sherbrooke', 'Quebec', 'P.O. Box 467, 3443 Diam. St.', '75769', 'pede.Cum@vitaevelit.edu', 'Fatima Britt', '1-342-655-4701'),
+	(65, '1971-11-01 13:48:43.000000', 'Pica', 'Tarapacá', '5729 Fermentum Rd.', '521763', 'sodales.at.velit@turpisegestasFusce.ca', 'Tarik Sosa', '1-358-258-9371'),
+	(66, '1987-07-28 11:20:20.000000', 'Berlin', 'Berlin', 'P.O. Box 723, 4483 Non Av.', 'G3Z 8S4', 'nec.cursus@leoinlobortis.co.uk', 'Ivor Hall', '1-981-816-5691'),
+	(67, '1977-12-07 00:49:05.000000', 'Çe?me', '?zm', 'P.O. Box 864, 5518 In Rd.', '84908', 'scelerisque.neque@euaccumsansed.org', 'Henry Dalton', '1-965-951-7181'),
+	(68, '1991-12-29 20:40:06.000000', 'Padre Hurtado', 'RM', '639-4404 A Av.', '793593', 'nisl@et.org', 'Martin Lara', '1-677-920-8012'),
+	(69, '1999-07-27 02:33:03.000000', 'Vliermaalroot', 'Limburg', '8289 Mauris Street', '927881', 'sem@sitamet.org', 'Gareth Joseph', '1-336-215-7286'),
+	(70, '2004-09-22 23:10:15.000000', 'Pasuruan', 'East Java', '148-7741 Sagittis Street', 'JQ5 5PY', 'lorem.fringilla@iaculisaliquet.com', 'Brynne Townsend', '1-831-663-8655'),
+	(71, '1992-12-01 17:57:24.000000', 'San Antonio', 'SJ', 'P.O. Box 989, 9792 Augue, St.', '1824', 'leo.elementum@velarcu.edu', 'Levi Whitney', '1-626-376-7836'),
+	(72, '1998-03-10 23:56:56.000000', 'Lima', 'LIM', 'Ap #135-8002 Mi Road', '42481', 'velit.Quisque.varius@dolor.org', 'Anne Butler', '1-150-462-4638'),
+	(73, '1977-07-08 19:57:03.000000', 'Soria', 'CL', '2210 Mattis. Street', '85872', 'sociis.natoque.penatibus@semper.ca', 'TaShya Farley', '1-655-965-7023'),
+	(74, '1998-08-07 18:59:46.000000', 'Paranaguá', 'PR', '265-9434 Nascetur Av.', '9076', 'elit@mauriseuelit.co.uk', 'Maite Bass', '1-708-435-6386'),
+	(75, '1974-09-26 05:48:31.000000', 'Ramara', 'ON', '826-4171 Sodales Avenue', 'K0X 1B4', 'posuere.enim.nisl@nullaCraseu.com', 'Jenna Tillman', '1-923-669-3032'),
+	(76, '1982-03-23 14:24:11.000000', 'Hamburg', 'HH', 'P.O. Box 856, 2461 Mollis Avenue', 'P8H 8V0', 'arcu.Vivamus.sit@aliquam.com', 'Leandra Ryan', '1-518-989-2999'),
+	(77, '1974-05-24 13:28:31.000000', 'Atlanta', 'Georgia', 'Ap #317-7235 Augue Ave', '18-025', 'congue.turpis@libero.co.uk', 'Lee Stevenson', '1-900-378-6140'),
+	(78, '1974-01-03 03:40:45.000000', 'Oryol', 'Oryol Oblast', '2413 Volutpat. St.', '71551', 'nunc@aliquamarcuAliquam.com', 'Irene Hartman', '1-142-519-8984'),
+	(79, '2002-03-28 16:55:25.000000', 'Falun', 'W', '7603 Phasellus Ave', '33498', 'Ut@ligula.net', 'Brenna Wheeler', '1-457-792-6156'),
+	(80, '1996-03-31 10:35:41.000000', 'Pematangsiantar', 'SU', '214-393 A Road', '3796', 'ullamcorper@vitae.net', 'Leigh Newman', '1-151-287-7874'),
+	(81, '1989-05-30 20:41:40.000000', 'Af?in', 'Kah', 'P.O. Box 568, 757 Ornare Avenue', '71804', 'gravida.mauris@magnaCrasconvallis.com', 'Heather Bowers', '1-364-621-8962'),
+	(82, '1973-09-08 08:36:47.000000', 'Saint-Nazaire', 'PA', 'P.O. Box 178, 3560 Cras Rd.', '56514', 'tincidunt.adipiscing@MaurismagnaDuis.edu', 'Jada Sanford', '1-175-255-6458'),
+	(83, '1972-07-12 23:21:31.000000', 'Pellizzano', 'TAA', '5476 Volutpat. Ave', '825041', 'nisl.Nulla@Phasellus.com', 'India Walton', '1-502-157-1535'),
+	(84, '1984-12-21 09:57:59.000000', 'Vehari', 'Sindh', '332 Feugiat Rd.', '107612', 'erat.Vivamus@vulputateduinec.ca', 'Elton Peters', '1-994-716-6389'),
+	(85, '1990-11-09 08:26:38.000000', 'Casablanca', 'V', 'P.O. Box 156, 7778 Donec St.', '90-731', 'venenatis.vel.faucibus@Nuncsed.net', 'Blaine Horn', '1-508-177-8152'),
+	(86, '1994-09-21 16:37:03.000000', 'San Rafael', 'San José', 'Ap #214-7376 Augue Rd.', '83151', 'a.facilisis@semsempererat.edu', 'Lacey Mclean', '1-122-725-2605'),
+	(87, '1999-09-13 00:07:17.000000', 'Torrejón de Ardoz', 'Madrid', '928-6783 Ante Avenue', '291576', 'Sed.et@Nullaeuneque.ca', 'Mona Chapman', '1-161-468-4401'),
+	(88, '1990-04-15 02:12:13.000000', 'Mérignac', 'Aquitaine', '322-3944 Turpis Avenue', '18252', 'pede.blandit.congue@magna.edu', 'Kylan Velez', '1-645-813-4860'),
+	(89, '1971-02-23 07:46:46.000000', 'Provo', 'Utah', 'P.O. Box 973, 8818 Lobortis Road', '37479', 'orci@euismodmauriseu.ca', 'James Emerson', '1-871-812-1447'),
+	(90, '1989-09-09 05:34:41.000000', 'Grafton', 'New South Wales', '8061 Eu Street', '723950', 'natoque.penatibus@utpharetra.edu', 'Rowan Lancaster', '1-757-579-0853'),
+	(91, '2000-08-27 21:52:03.000000', 'Ryazan', 'Ryazan Oblast', 'Ap #982-9022 Molestie Avenue', '4863 TU', 'Aliquam.fringilla@massaInteger.net', 'Leandra Schroeder', '1-599-533-1158'),
+	(92, '2001-03-23 10:38:44.000000', 'Bremen', 'Bremen', '525-2171 Ac Av.', '3738', 'Nullam.vitae@Crasloremlorem.com', 'Cynthia Pace', '1-258-418-0758'),
+	(93, '1989-07-08 05:47:08.000000', 'Sullana', 'PIU', 'P.O. Box 545, 8158 Aliquet Rd.', '36-134', 'erat.neque.non@liberoProinsed.edu', 'Dacey Stephens', '1-976-236-5620'),
+	(94, '1980-04-20 23:06:13.000000', 'Berlin', 'BE', '7876 Adipiscing St.', '460019', 'a.dui@lectusCum.com', 'Vernon Dillon', '1-544-870-4138'),
+	(95, '2002-04-09 20:02:54.000000', 'Dublin', 'L', '645-9687 Eget, St.', 'TI5A 9FC', 'leo.in@bibendumDonec.org', 'Darius Byers', '1-993-130-5259'),
+	(96, '1998-12-06 15:25:24.000000', 'Bremerhaven', 'Bremen', 'P.O. Box 691, 9989 Non, Rd.', 'Z8374', 'amet@mauris.ca', 'Gregory Gilmore', '1-108-322-0215'),
+	(97, '1985-08-10 16:49:06.000000', 'Pabianice', 'LD', '183-1249 Sed Avenue', '3867 YT', 'ridiculus.mus.Proin@variuseteuismod.net', 'Aretha Figueroa', '1-513-865-1187'),
+	(98, '2003-02-20 02:32:27.000000', 'Belfast', 'Ulster', '873-496 Dapibus St.', '9567', 'malesuada@Crasconvallisconvallis.org', 'Stacy Griffin', '1-993-909-7837'),
+	(99, '1988-04-27 22:36:14.000000', 'Sterling Heights', 'Michigan', '319-4691 Phasellus Rd.', '667237', 'arcu@Aeneanegestas.net', 'Merritt Chan', '1-223-127-2261'),
+	(100, '1979-07-01 06:56:33.000000', 'La Baie', 'Quebec', '7549 Laoreet, Road', '26777', 'ipsum@risusDonecnibh.net', 'Octavia Cohen', '1-356-245-0741'),
+	(101, '1983-08-06 12:55:44.000000', 'Hannut', 'Luik', '1765 Est, Rd.', '82765', 'senectus.et@imperdietullamcorper.ca', 'Nissim Foreman', '1-250-500-3659'),
+	(102, '1991-07-13 22:50:39.000000', 'Gliwice', 'SL', 'Ap #871-1459 Metus Ave', '23933-83831', 'mattis@velit.com', 'Jaden Brady', '1-772-548-0157'),
+	(103, '1996-05-11 04:40:49.000000', 'Blue Mountains', 'NSW', 'P.O. Box 438, 3715 Aliquam Avenue', '6528', 'Morbi@molestiedapibus.edu', 'Pascale Boone', '1-660-488-5382'),
+	(104, '1985-03-09 01:11:20.000000', 'New Plymouth', 'North Island', 'Ap #851-7867 Cras Ave', '4949', 'laoreet.lectus@Vivamus.org', 'Hermione Carr', '1-648-694-0551'),
+	(105, '1989-08-05 11:02:39.000000', 'Belfast', 'Ulster', '9115 Sed Av.', 'HR3 4LJ', 'ut@acsemut.org', 'Elton Mack', '1-979-561-9925'),
+	(106, '2001-06-27 09:14:53.000000', 'Montbéliard', 'Franche-Comté', 'Ap #867-4865 Phasellus St.', '13-931', 'lobortis.quis.pede@Nuncmaurissapien.edu', 'Sydnee Patton', '1-400-236-6448'),
+	(107, '1982-07-07 11:19:06.000000', 'Anseong', 'Gye', 'Ap #108-805 Nulla Rd.', '3879', 'tristique.neque@arcueu.com', 'Lance Sears', '1-710-221-4177'),
+	(108, '1985-12-28 20:20:39.000000', 'San Rafael Abajo', 'SJ', '994-4972 Parturient Rd.', '27-015', 'erat.volutpat@dui.co.uk', 'Madison Hamilton', '1-151-996-1605'),
+	(109, '1982-02-09 20:50:24.000000', 'Almelo', 'Overijssel', '792-659 Dolor Road', '8493 MP', 'Etiam.gravida@Suspendisseeleifend.ca', 'Phoebe Bates', '1-296-462-0121'),
+	(110, '1999-08-01 01:27:39.000000', 'Belfast', 'Ulster', '1322 Blandit Rd.', '3657', 'nonummy@elementumdui.ca', 'Jenette Bryan', '1-856-358-8511'),
+	(111, '1982-10-09 18:43:25.000000', 'Colchester', 'Vermont', 'Ap #869-7974 Donec St.', '277913', 'sociis.natoque@Maecenas.co.uk', 'Ingrid Coleman', '1-943-901-2404'),
+	(112, '1979-11-10 09:55:29.000000', 'Cardigan', 'CG', 'P.O. Box 689, 9573 Pede St.', '58274', 'semper.auctor.Mauris@turpisnec.org', 'Sierra Bright', '1-964-163-3347'),
+	(113, '1985-01-02 14:31:57.000000', 'Napier', 'North Island', 'Ap #823-9630 At Road', '29213', 'tellus.Aenean.egestas@amagnaLorem.com', 'Dillon Burt', '1-275-188-6076'),
+	(114, '1972-01-31 19:58:19.000000', 'Stratford', 'PE', 'P.O. Box 665, 6237 Id, Road', '5792', 'dui@mauris.com', 'Belle Kelley', '1-764-332-1231'),
+	(115, '1988-08-12 20:17:16.000000', 'Owensboro', 'KY', '438-3775 Non, Street', '061755', 'ipsum.non.arcu@sociis.ca', 'Mona Kirk', '1-844-570-0477'),
+	(116, '1971-07-01 13:17:01.000000', 'Cuenca', 'CM', 'Ap #434-7193 Eleifend Street', '8510', 'euismod.et.commodo@ligula.org', 'Patience Colon', '1-693-414-7563'),
+	(117, '2001-05-15 07:58:36.000000', 'Caprino Bergamasco', 'LOM', 'Ap #490-9164 Gravida Rd.', '3406', 'justo.faucibus.lectus@Vivamussit.edu', 'Ramona Haney', '1-480-451-3932'),
+	(118, '1973-06-27 09:50:45.000000', 'Vienna', 'Wie', '424-9260 Imperdiet Rd.', '31510', 'Morbi.neque.tellus@arcu.ca', 'Hammett Bradshaw', '1-525-768-9990'),
+	(119, '1982-10-22 14:12:10.000000', 'Newport News', 'Virginia', 'P.O. Box 884, 1022 Diam Road', '8507', 'sem@liberoProin.ca', 'Anjolie Moran', '1-139-128-0943');
 
-INSERT INTO `user_role` VALUES (1, 1);
-INSERT INTO `user_role` VALUES (2, 3);
-INSERT INTO `user_role` VALUES (3, 2);
-INSERT INTO `user_role` VALUES (4, 3);
-INSERT INTO `user_role` VALUES (5, 2);
-INSERT INTO `user_role` VALUES (6, 2);
-INSERT INTO `user_role` VALUES (7, 2);
-INSERT INTO `user_role` VALUES (8, 3);
+INSERT INTO `reservation` (`code`, `created_by`, `createdDate`, `passenger_ID`, `status`, `flight_id`)
+VALUES
+	('0XQWCm', 1, '2020-06-16 15:42:33.821000', 20, 0, 14),
+	('3Z24On', 1, '2020-06-16 10:59:39.471000', 21, 2, 4),
+	('9MONoq', 1, '2020-06-16 15:42:33.793000', 22, 0, 12),
+	('CShmeH', 1, '2020-06-16 11:42:06.186000', 23, 0, 19),
+	('hbMdBc', 1, '2020-06-16 11:42:06.153000', 24, 2, 10),
+	('iNky5p', 1, '2020-06-16 10:59:39.497000', 25, 0, 5),
+	('l8uZK6', 1, '2020-06-16 12:21:51.586000', 26, 1, 18),
+	('mIsaoQ', 3, '2020-06-16 10:59:39.452000', 27, 0, 3),
+	('n20iAD', 1, '2020-06-16 14:19:44.397000', 28, 0, 51),
+	('NWeh6L', 1, '2020-06-16 10:59:39.522000', 29, 0, 6),
+	('s94JV9', 1, '2020-06-16 15:42:33.840000', 30, 1, 19),
+	('TMwCoR', 1, '2020-06-16 12:21:51.562000', 31, 0, 30),
+	('V6zxZf', 1, '2020-06-16 10:59:27.733000', 32, 1, 1),
+	('VJ1Zz7', 1, '2020-06-16 13:13:49.589000', 33, 0, 50),
+	('vrIdxd', 1, '2020-06-16 12:21:51.574000', 34, 1, 29),
+	('YT69Bv', 1, '2020-06-16 10:59:39.425000', 35, 0, 2);
+
+INSERT INTO `ticket` (`id`, `flightdate`, `number`, `flight_id`, `passenger_ID`, `reservation_code`)
+VALUES
+	(3, '2020-05-24 03:04:25.000000', '61469317446157967506', 29, 20, 'vrIdxd'),
+	(4, '2020-05-15 05:13:28.000000', '34282897163068269204', 19, 21, 's94JV9'),
+	(5, '2020-05-14 05:45:52.000000', '13004963982740361580', 18, 22, 'l8uZK6'),
+	(6, '2020-04-30 12:43:58.000000', '56596949008155125224', 1, 23, 'V6zxZf');
