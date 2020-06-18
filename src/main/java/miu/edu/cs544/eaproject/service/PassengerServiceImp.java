@@ -13,6 +13,8 @@ public class PassengerServiceImp implements PassengerService {
 
     @Override
     public Passenger getPassengerById(Integer id) {
-        return this.passengerRepository.findById(id).get();
+        if(this.passengerRepository.findById(id).isPresent())
+            return this.passengerRepository.findById(id).get();
+        return null;
     }
 }

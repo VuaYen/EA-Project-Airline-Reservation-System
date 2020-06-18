@@ -105,7 +105,9 @@ public class FlightServiceImp implements FlightService {
 
     @Override
     public Flight getFlightEntityById(Integer flightId) {
-        return flightRepository.findById(flightId).get();
+        if(flightRepository.findById(flightId).isPresent())
+            return flightRepository.findById(flightId).get();
+        return null;
     }
 
     @Override
