@@ -2,6 +2,9 @@ package miu.edu.cs544.eaproject.controller;
 
 import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.service.*;
+import miu.edu.cs544.eaproject.service.response.AirlineResponse;
+import miu.edu.cs544.eaproject.service.response.AirportResponse;
+import miu.edu.cs544.eaproject.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.access.annotation.Secured;
@@ -31,60 +34,52 @@ public class PassengerController {
     private AirlineService airlineService;
 
     @GetMapping(value = {"", "/"})
-    public List<Airport> getAllAirports()
-    {
-        return airportService.viewAirports();
+    public List<AirportResponse> getAllAirports() {
+        return airportService.getAllAirports();
     }
 
     @GetMapping("/airports")
-    public List<Airport> getAllAirports1()
-    {
-        return airportService.viewAirports();
+    public List<AirportResponse> getAllAirports1() {
+        return airportService.getAllAirports();
     }
 
     @GetMapping("/flights")
-    public List<Flight> getAllFlights()
-    {
-        return flightService.viewAllFlights();
+    public List<FlightResponse> getAllFlights() {
+        return flightService.getAllFlights();
     }
 
     @GetMapping("/airlines")
-    public List<Airline> getAllAirlines()
-    {
-        return airlineService.viewAirlines();
+    public List<AirlineResponse> getAllAirlines() {
+        return airlineService.getAllAirlines();
     }
 
     @GetMapping("/reservations")
-    public List<Reservation> getAllReservations()
-    {
+    public List<Reservation> getAllReservations() {
         return reservationService.viewReservations();
     }
 
     @GetMapping("/reservations/{code}")
-    public Reservation viewDetailReservationById(@PathVariable(name = "code") String code) throws Exception
-    {
+    public Reservation viewDetailReservationById(@PathVariable(name = "code") String code) throws Exception {
         return reservationService.getReservationByCode(code);
     }
 
     @GetMapping("/tickets")
-    public List<Ticket> getAllTickets()
-    {
+    public List<Ticket> getAllTickets() {
         return ticketService.viewTickets();
     }
 
     @GetMapping("/airlines/{code}")
-    public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception
-    {
+    public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception {
         return flightService.viewAllFlightsOutAirport(code);
     }
 
     @GetMapping("/findAirlinesByFlightDepartureAirportCode/{code}")
-    public List<Airline> getAirlinesByFlightsDepartureAirportCode(@PathVariable String code) {
+    public List<AirlineResponse> getAirlinesByFlightsDepartureAirportCode(@PathVariable String code) {
         return airlineService.getAirlinesByFlightsDepartureAirportCode(code);
     }
 
     @GetMapping("/findFlightsByDepartureAndDestinationForDate")
-    public List<Flight> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
+    public List<FlightResponse> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
                                                                    @RequestParam String AACode,
                                                                    @RequestParam Date departureTime) {
         return flightService.getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(DACode, AACode, departureTime);
@@ -97,7 +92,7 @@ public class PassengerController {
 
     @GetMapping("/myreservation")
     public List<Reservation> getMyReservations() {
-        Integer userid=2;
+        Integer userid = 2;
         return reservationService.getReservationsCreateBy(userid);
     }
 
