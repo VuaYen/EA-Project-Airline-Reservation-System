@@ -6,9 +6,7 @@ import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.exception.RecordNotFoundException;
 import miu.edu.cs544.eaproject.service.*;
 import miu.edu.cs544.eaproject.service.request.FlightCreateRequest;
-import miu.edu.cs544.eaproject.service.response.AirlineResponse;
-import miu.edu.cs544.eaproject.service.response.AirportResponse;
-import miu.edu.cs544.eaproject.service.response.FlightResponse;
+import miu.edu.cs544.eaproject.service.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -136,14 +134,14 @@ public class AdminController {
     }
 
     @GetMapping("/findFlightsByDepartureAndDestinationForDate")
-    public List<FlightResponse> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
-                                                                   @RequestParam String AACode,
-                                                                   @RequestParam Date departureTime) {
+    public List<FlightsAirlineResponse> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
+                                                                                   @RequestParam String AACode,
+                                                                                   @RequestParam Date departureTime) {
         return flightService.getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(DACode, AACode, departureTime);
     }
 
     @GetMapping("/findReservationsByPassengerId/{id}")
-    public List<Reservation> getReservationsByPassengerId(@PathVariable Integer id) {
+    public List<PassengerReservationsResponse> getReservationsByPassengerId(@PathVariable Integer id) {
         return reservationService.getReservationsByPassengerId(id);
     }
 
