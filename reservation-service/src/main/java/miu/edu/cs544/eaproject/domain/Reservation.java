@@ -1,0 +1,37 @@
+package miu.edu.cs544.eaproject.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.Date;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "reservation")
+public class Reservation {
+    @Id
+    @Size(min = 6, max = 6, message = "{error.size}")
+    private String code;
+
+    private ReservationStatus status;
+    private Date createdDate;
+
+    @ManyToOne
+    private Flight flight;
+
+    @ManyToOne
+    @JoinColumn(name = "passenger_id")
+    @JsonIgnore
+    private Passenger passenger;
+
+    @Column(name = "created_by", columnDefinition = "bigint unsigned")
+    private Integer createdBy;
+}
