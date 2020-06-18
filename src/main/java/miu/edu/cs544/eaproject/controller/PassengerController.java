@@ -32,25 +32,25 @@ public class PassengerController {
     @GetMapping(value = {"", "/"})
     public List<Airport> getAllAirports()
     {
-        return airportService.viewAirports();
+        return airportService.getAllAirports();
     }
 
     @GetMapping("/airports")
     public List<Airport> getAllAirports1()
     {
-        return airportService.viewAirports();
+        return airportService.getAllAirports();
     }
 
     @GetMapping("/flights")
     public List<Flight> getAllFlights()
     {
-        return flightService.viewAllFlights();
+        return flightService.getAllFlights();
     }
 
     @GetMapping("/airlines")
     public List<Airline> getAllAirlines()
     {
-        return airlineService.viewAirlines();
+        return airlineService.getAllAirlines();
     }
 
     @GetMapping("/reservations")

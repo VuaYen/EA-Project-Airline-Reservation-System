@@ -1,6 +1,7 @@
 package miu.edu.cs544.eaproject.controller;
 
 //import org.springframework.security.access.prepost.PreAuthorize;
+
 import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,33 +31,31 @@ public class AgentController {
     @Autowired
     private AirlineService airlineService;
 
+    @Autowired
+    private AccountService accountService;
+
     @GetMapping(value = {"", "/"})
-    public List<Airport> getAllAirports()
-    {
-        return airportService.viewAirports();
+    public List<Airport> getAllAirports() {
+        return airportService.getAllAirports();
     }
 
     @GetMapping("/airports")
-    public List<Airport> getAllAirports1()
-    {
-        return airportService.viewAirports();
+    public List<Airport> getAllAirports1() {
+        return airportService.getAllAirports();
     }
 
     @GetMapping("/flights")
-    public List<Flight> getAllFlights()
-    {
-        return flightService.viewAllFlights();
+    public List<Flight> getAllFlights() {
+        return flightService.getAllFlights();
     }
 
     @GetMapping("/airlines")
-    public List<Airline> getAllAirlines()
-    {
-        return airlineService.viewAirlines();
+    public List<Airline> getAllAirlines() {
+        return airlineService.getAllAirlines();
     }
 
     @GetMapping("/reservations")
-    public List<Reservation> getAllReservations()
-    {
+    public List<Reservation> getAllReservations() {
         return reservationService.viewReservations();
     }
     @GetMapping("/reservations/{code}")
@@ -71,14 +70,12 @@ public class AgentController {
     }
 
     @GetMapping("/tickets")
-    public List<Ticket> getAllTickets()
-    {
+    public List<Ticket> getAllTickets() {
         return ticketService.viewTickets();
     }
 
     @GetMapping("/airlines/{code}")
-    public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception
-    {
+    public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception {
         return flightService.viewAllFlightsOutAirport(code);
     }
     @GetMapping("/findFlightsByDepartureAndDestinationForDate")
@@ -103,6 +100,11 @@ public class AgentController {
     {
         return flightService.viewAllFlightsOutAirport(code);
     }
+
+//    @GetMapping("/findPassengersAndReservationsCreatedByAgentId/{id}")
+//    public List<Passenger> findPassengersAndReservationsCreatedByAgentId(@PathVariable Integer id) {
+//        return accountService.getPassengersAndReservationsCreatedByAgentId(id);
+//    }
 
 
 }
