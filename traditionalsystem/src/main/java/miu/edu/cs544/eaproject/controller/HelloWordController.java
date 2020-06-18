@@ -12,4 +12,8 @@ public class HelloWordController {
     public String HelloWord(){
         return  "<div><h1>Welcome to EA Project Group 8 Description – June 2020.</h1> <br>We are trying to create a RESTful application (the backend part of it; no UI ) for an “Airline Reservation System” </div> ";
     }
+    @GetMapping(value = {"/name"})
+    public String projectName(){
+        return  "Airline Reservation System";
+    }
 }
