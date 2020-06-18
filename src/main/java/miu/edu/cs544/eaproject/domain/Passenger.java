@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,5 +29,9 @@ public class Passenger {
 
     @Embedded
     public Address address;
+
+    @OneToMany (mappedBy = "passenger")
+    private List<Reservation> reservations;
+
 
 }

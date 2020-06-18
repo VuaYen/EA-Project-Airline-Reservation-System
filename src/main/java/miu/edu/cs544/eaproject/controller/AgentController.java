@@ -30,6 +30,9 @@ public class AgentController {
     @Autowired
     private AirlineService airlineService;
 
+    @Autowired
+    private PassengerService passengerService;
+
     @GetMapping(value = {"", "/"})
     public List<AirportResponse> getAllAirports() {
         return airportService.getAllAirports();
@@ -54,12 +57,12 @@ public class AgentController {
     public List<Reservation> getAllReservations() {
         return reservationService.viewReservations();
     }
+
     @GetMapping("/reservations/{code}")
-    public Reservation viewDetailReservationById(@PathVariable(name = "code") String code) throws Exception
-    {
+    public Reservation viewDetailReservationById(@PathVariable(name = "code") String code) throws Exception {
         //check this reservation by this agent.
-        Integer currentAgentid=3;
-        if (reservationService.getReservationByCode(code).getCreatedBy()==currentAgentid)
+        Integer currentAgentid = 3;
+        if (reservationService.getReservationByCode(code).getCreatedBy() == currentAgentid)
             return reservationService.getReservationByCode(code);
         else
             return null;
@@ -74,6 +77,7 @@ public class AgentController {
     public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception {
         return flightService.viewAllFlightsOutAirport(code);
     }
+
     @GetMapping("/findFlightsByDepartureAndDestinationForDate")
     public List<FlightsAirlineResponse> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
                                                                                    @RequestParam String AACode,
@@ -88,19 +92,19 @@ public class AgentController {
 
     @GetMapping("/myreservation")
     public List<Reservation> getMyReservations() {
-        Integer userid=2;
+        Integer userid = 2;
         return reservationService.getReservationsCreateBy(userid);
     }
+
     @GetMapping("/viewlistairlinesflightoutairport/{code}")
-    public List<Airline> viewListAirlinesFlightoutairport(@PathVariable(name = "code") String code) throws Exception
-    {
+    public List<Airline> viewListAirlinesFlightoutairport(@PathVariable(name = "code") String code) throws Exception {
         return flightService.viewAllFlightsOutAirport(code);
     }
 
-//    @GetMapping("/findPassengersAndReservationsCreatedByAgentId/{id}")
-//    public List<Passenger> findPassengersAndReservationsCreatedByAgentId(@PathVariable Integer id) {
-//        return accountService.getPassengersAndReservationsCreatedByAgentId(id);
-//    }
+    @GetMapping("/findPassengersAndReservationsCreatedByAgentId/{id}")
+    public List<PassengerAndReservationsResponse> findPassengersAndReservationsCreatedByAgentId(@PathVariable Integer id) {
+        return passengerService.getPassengersAndReservationsByReservationsCreatedBy(id);
+    }
 
 
 }
