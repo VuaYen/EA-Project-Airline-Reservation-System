@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +19,4 @@ public class AirlineResponse implements Serializable {
     private String name;
 
     private String history;
-
-    //private List<FlightResponse> flights;
 }
