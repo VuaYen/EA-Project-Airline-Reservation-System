@@ -60,6 +60,7 @@ public class UserController {
 	@Secured({ "ROLE_ADMIN" })
 	public List<User> getListUsers()
 	{
+//		System.out.println(request.getUserPrincipal().getName());
 		return userService.viewListUser();
 	}
 }

@@ -57,7 +57,7 @@ public class UserService implements UserDetailsService {
 	}
 	
 	public Boolean deleteUser(long userId) {
-		
+		accountRepository.deleteById(userId);
 		userRepository.deleteById(userId);
 		return true;
 	}

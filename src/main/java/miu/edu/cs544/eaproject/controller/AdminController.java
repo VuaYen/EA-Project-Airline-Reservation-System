@@ -25,7 +25,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("admin")
-//@PreAuthorize("hasRole('ROLE_ADMIN')")
+//@Secured({ "ROLE_ADMIN" })
 public class AdminController {
 
     @Autowired
