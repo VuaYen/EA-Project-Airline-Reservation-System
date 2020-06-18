@@ -9,10 +9,13 @@ import miu.edu.cs544.eaproject.service.response.AirportResponse;
 import miu.edu.cs544.eaproject.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -103,6 +106,15 @@ public class AgentController {
     public List<Airline> viewListAirlinesFlightoutairport(@PathVariable(name = "code") String code) throws Exception
     {
         return flightService.viewAllFlightsOutAirport(code);
+    }
+    @PutMapping(value = {"/reservation/cancel/{code}"})
+    public ResponseEntity<String> cancelReservations(@PathVariable String code) {
+        List<Ticket> tickets = new ArrayList<>();
+        int currentUserId = 1;
+        if(reservationService.cancelReservations(code, currentUserId)) {
+            return ResponseEntity.status(HttpStatus.OK).body("The reservation " + code + " is canceled!");
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The reservation " + code + " can not canceled!");
     }
 
 //    @GetMapping("/findPassengersAndReservationsCreatedByAgentId/{id}")

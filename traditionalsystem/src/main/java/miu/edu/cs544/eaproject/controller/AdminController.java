@@ -44,6 +44,11 @@ public class AdminController {
     @Autowired
     private ReservationService reservationService;
 
+    @GetMapping(value = {"", "/"})
+    public String welcomeAdmin() {
+        return "Welcome Admin Page";
+    }
+
 
     // Starting Airline CURD Operations
     @GetMapping("/airline/list")
