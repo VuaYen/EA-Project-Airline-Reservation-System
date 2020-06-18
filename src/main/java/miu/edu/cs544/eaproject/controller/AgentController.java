@@ -4,6 +4,9 @@ package miu.edu.cs544.eaproject.controller;
 
 import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.service.*;
+import miu.edu.cs544.eaproject.service.response.AirlineResponse;
+import miu.edu.cs544.eaproject.service.response.AirportResponse;
+import miu.edu.cs544.eaproject.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -35,22 +38,22 @@ public class AgentController {
     private AccountService accountService;
 
     @GetMapping(value = {"", "/"})
-    public List<Airport> getAllAirports() {
+    public List<AirportResponse> getAllAirports() {
         return airportService.getAllAirports();
     }
 
     @GetMapping("/airports")
-    public List<Airport> getAllAirports1() {
+    public List<AirportResponse> getAllAirports1() {
         return airportService.getAllAirports();
     }
 
     @GetMapping("/flights")
-    public List<Flight> getAllFlights() {
+    public List<FlightResponse> getAllFlights() {
         return flightService.getAllFlights();
     }
 
     @GetMapping("/airlines")
-    public List<Airline> getAllAirlines() {
+    public List<AirlineResponse> getAllAirlines() {
         return airlineService.getAllAirlines();
     }
 
@@ -79,7 +82,7 @@ public class AgentController {
         return flightService.viewAllFlightsOutAirport(code);
     }
     @GetMapping("/findFlightsByDepartureAndDestinationForDate")
-    public List<Flight> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
+    public List<FlightResponse> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
                                                                    @RequestParam String AACode,
                                                                    @RequestParam Date departureTime) {
         return flightService.getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(DACode, AACode, departureTime);

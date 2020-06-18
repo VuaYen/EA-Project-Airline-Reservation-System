@@ -3,6 +3,8 @@ package miu.edu.cs544.eaproject.service;
 import miu.edu.cs544.eaproject.domain.Airport;
 import miu.edu.cs544.eaproject.exception.RecordNotFoundException;
 import miu.edu.cs544.eaproject.repository.AirportRepository;
+import miu.edu.cs544.eaproject.service.mapper.AirportMapper;
+import miu.edu.cs544.eaproject.service.response.AirportResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,29 +22,29 @@ public class AirportServiceImp implements AirportService {
     private AirportRepository airportRepository;
 
     @Override
-    public List<Airport> getAllAirports() {
+    public List<AirportResponse> getAllAirports() {
         List<Airport> airportList = (List<Airport>) airportRepository.findAll();
 
         if (airportList.size() > 0) {
-            return airportList;
+            return airportList.stream().map(AirportMapper::mapToAirportResponse).collect(Collectors.toList());
         } else {
-            return new ArrayList<Airport>();
+            return new ArrayList<AirportResponse>();
         }
     }
 
     @Override
-    public Airport getAirportById(Integer id) throws RecordNotFoundException {
+    public AirportResponse getAirportById(Integer id) throws RecordNotFoundException {
         Optional<Airport> airport = airportRepository.findById(id);
 
         if (airport.isPresent()) {
-            return airport.get();
+            return AirportMapper.mapToAirportResponse(airport.get());
         } else {
             throw new RecordNotFoundException("No airport record exist for given id");
         }
     }
 
     @Override
-    public Airport createOrUpdateAirport(Airport entity) throws RecordNotFoundException {
+    public AirportResponse createOrUpdateAirport(Airport entity) throws RecordNotFoundException {
         Optional<Airport> airport = airportRepository.findById(entity.getId());
 
         if (airport.isPresent()) {
@@ -53,10 +55,10 @@ public class AirportServiceImp implements AirportService {
             newEntity.setAddress(entity.getAddress());
 
             newEntity = airportRepository.save(newEntity);
-            return newEntity;
+            return AirportMapper.mapToAirportResponse(newEntity);
         } else {
             entity = airportRepository.save(entity);
-            return entity;
+            return AirportMapper.mapToAirportResponse(entity);
         }
     }
 

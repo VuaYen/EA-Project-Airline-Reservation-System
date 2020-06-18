@@ -6,6 +6,9 @@ import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.exception.RecordNotFoundException;
 import miu.edu.cs544.eaproject.service.*;
 import miu.edu.cs544.eaproject.service.request.FlightCreateRequest;
+import miu.edu.cs544.eaproject.service.response.AirlineResponse;
+import miu.edu.cs544.eaproject.service.response.AirportResponse;
+import miu.edu.cs544.eaproject.service.response.FlightResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -43,21 +46,21 @@ public class AdminController {
 
     // Starting Airline CURD Operations
     @GetMapping("/airline/list")
-    public ResponseEntity<List<Airline>> getAllAirlines() {
-        List<Airline> list = airlineService.getAllAirlines();
-        return new ResponseEntity<List<Airline>>(list, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<List<AirlineResponse>> getAllAirlines() {
+        List<AirlineResponse> list = airlineService.getAllAirlines();
+        return new ResponseEntity<List<AirlineResponse>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/airline/{id}")
-    public ResponseEntity<Airline> getAirlineById(@PathVariable Integer id) throws RecordNotFoundException {
-        Airline airline = airlineService.getAirlineById(id);
-        return new ResponseEntity<Airline>(airline, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<AirlineResponse> getAirlineById(@PathVariable Integer id) throws RecordNotFoundException {
+        AirlineResponse airline = airlineService.getAirlineById(id);
+        return new ResponseEntity<AirlineResponse>(airline, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping("/airline/createOrUpdate")
-    public ResponseEntity<Airline> createOrUpdateAirline(@RequestBody Airline airline) throws RecordNotFoundException {
-        Airline updated = airlineService.createOrUpdateAirline(airline);
-        return new ResponseEntity<Airline>(updated, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<AirlineResponse> createOrUpdateAirline(@RequestBody Airline airline) throws RecordNotFoundException {
+        AirlineResponse updated = airlineService.createOrUpdateAirline(airline);
+        return new ResponseEntity<AirlineResponse>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
     @DeleteMapping("/airline/deleteById/{id}")
@@ -68,21 +71,21 @@ public class AdminController {
 
     // Starting Airport CURD Operations
     @GetMapping("/airport/list")
-    public ResponseEntity<List<Airport>> getAllAirports() {
-        List<Airport> list = airportService.getAllAirports();
-        return new ResponseEntity<List<Airport>>(list, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<List<AirportResponse>> getAllAirports() {
+        List<AirportResponse> list = airportService.getAllAirports();
+        return new ResponseEntity<List<AirportResponse>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/airport/{id}")
-    public ResponseEntity<Airport> getAirportById(@PathVariable Integer id) throws RecordNotFoundException {
-        Airport airport = airportService.getAirportById(id);
-        return new ResponseEntity<Airport>(airport, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<AirportResponse> getAirportById(@PathVariable Integer id) throws RecordNotFoundException {
+        AirportResponse airport = airportService.getAirportById(id);
+        return new ResponseEntity<AirportResponse>(airport, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping("/airport/createOrUpdate")
-    public ResponseEntity<Airport> createOrUpdateAirport(@RequestBody Airport airport) throws RecordNotFoundException {
-        Airport updated = airportService.createOrUpdateAirport(airport);
-        return new ResponseEntity<Airport>(updated, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<AirportResponse> createOrUpdateAirport(@RequestBody Airport airport) throws RecordNotFoundException {
+        AirportResponse updated = airportService.createOrUpdateAirport(airport);
+        return new ResponseEntity<AirportResponse>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
     @DeleteMapping("/airport/deleteById/{id}")
@@ -93,21 +96,21 @@ public class AdminController {
 
     // Starting Flight CURD Operations
     @GetMapping("/flight/list")
-    public ResponseEntity<List<Flight>> getAllFlights() {
-        List<Flight> list = flightService.getAllFlights();
-        return new ResponseEntity<List<Flight>>(list, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<List<FlightResponse>> getAllFlights() {
+        List<FlightResponse> list = flightService.getAllFlights();
+        return new ResponseEntity<List<FlightResponse>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/flight/{id}")
-    public ResponseEntity<Flight> getFlightById(@PathVariable Integer id) throws RecordNotFoundException {
-        Flight flight = flightService.getFlightById(id);
-        return new ResponseEntity<Flight>(flight, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<FlightResponse> getFlightById(@PathVariable Integer id) throws RecordNotFoundException {
+        FlightResponse flight = flightService.getFlightById(id);
+        return new ResponseEntity<FlightResponse>(flight, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping("/flight/createOrUpdate")
-    public ResponseEntity<Flight> createOrUpdateFlight(@RequestBody FlightCreateRequest flight) throws RecordNotFoundException {
-        Flight updated = flightService.createOrUpdateFlight(flight);
-        return new ResponseEntity<Flight>(updated, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<FlightResponse> createOrUpdateFlight(@RequestBody FlightCreateRequest flight) throws RecordNotFoundException {
+        FlightResponse updated = flightService.createOrUpdateFlight(flight);
+        return new ResponseEntity<FlightResponse>(updated, new HttpHeaders(), HttpStatus.OK);
     }
 
     @DeleteMapping("/flight/deleteById/{id}")
@@ -130,8 +133,9 @@ public class AdminController {
     public List<Airline> getAllAirlinesFlightOutAirport(@PathVariable(name = "code") String code) throws Exception {
         return flightService.viewAllFlightsOutAirport(code);
     }
+
     @GetMapping("/findFlightsByDepartureAndDestinationForDate")
-    public List<Flight> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
+    public List<FlightResponse> getFlightsByDepartureAndDestinationForDate(@RequestParam String DACode,
                                                                    @RequestParam String AACode,
                                                                    @RequestParam Date departureTime) {
         return flightService.getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(DACode, AACode, departureTime);
