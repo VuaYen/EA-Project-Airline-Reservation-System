@@ -5,6 +5,7 @@ import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("agents")
-//@PreAuthorize("hasRole('ROLE_AGENT')")
+//@Secured({ "ROLE_AGENT","ROLE_ADMIN" })
 public class AgentController {
     @Autowired
     private AirportService airportService;
