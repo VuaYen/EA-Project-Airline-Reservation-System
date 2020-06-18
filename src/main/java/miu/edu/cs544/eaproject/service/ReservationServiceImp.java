@@ -4,8 +4,10 @@ import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.exception.NotAcceptableException;
 import miu.edu.cs544.eaproject.repository.FlightRepository;
 import miu.edu.cs544.eaproject.repository.ReservationRepository;
+import miu.edu.cs544.eaproject.service.mapper.PassengerReservationsMapper;
 import miu.edu.cs544.eaproject.service.request.AgentReservationCreateRequest;
 import miu.edu.cs544.eaproject.service.response.FlightResponse;
+import miu.edu.cs544.eaproject.service.response.PassengerReservationsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,7 +65,7 @@ public class ReservationServiceImp implements ReservationService {
     public Reservation createReservation(Integer flightId, Integer passenger_ID, Integer created_by) {
         Reservation reservation = null;
         Flight flight = flightService.getFlightEntityById(flightId);
-        if(flight != null) {
+        if (flight != null) {
             reservation = new Reservation();
             String code = this.generateReservationCode();
 
@@ -76,7 +78,7 @@ public class ReservationServiceImp implements ReservationService {
 
             this.reservationRepository.save(reservation);
         } else {
-            throw new NotAcceptableException("Flight id " + flightId + " does not found!" );
+            throw new NotAcceptableException("Flight id " + flightId + " does not found!");
         }
 
         return reservation;
@@ -84,7 +86,7 @@ public class ReservationServiceImp implements ReservationService {
 
     @Override
     public Reservation getReservationByCode(String code) {
-        if(this.reservationRepository.findById(code).isPresent())
+        if (this.reservationRepository.findById(code).isPresent())
             return this.reservationRepository.findById(code).get();
         return null;
     }
@@ -92,22 +94,21 @@ public class ReservationServiceImp implements ReservationService {
     @Override
     public List<Ticket> confirmReservation(List<String> reservationCodes, Integer current_user_ID) {
         List<Ticket> tickets = new ArrayList<>();
-        for ( String reservationCode: reservationCodes) {
+        for (String reservationCode : reservationCodes) {
             Reservation reservation = this.getReservationByCode(reservationCode);
-            if(reservation != null) {
-                if(!reservation.getCreatedBy().equals(current_user_ID)) {
-                    throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
+            if (reservation != null) {
+                if (!reservation.getCreatedBy().equals(current_user_ID)) {
+                    throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!");
                 }
 
-                if(!reservation.getStatus().equals(ReservationStatus.New)) {
-                    throw new NotAcceptableException("Reservation code " + reservationCode + " is confirmed!" );
+                if (!reservation.getStatus().equals(ReservationStatus.New)) {
+                    throw new NotAcceptableException("Reservation code " + reservationCode + " is confirmed!");
                 }
 
                 tickets.add(this.ticketService.createTicket(reservation));
                 reservation.setStatus(ReservationStatus.Accept);
-            }
-            else {
-                throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!" );
+            } else {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!");
             }
         }
 
@@ -117,34 +118,33 @@ public class ReservationServiceImp implements ReservationService {
     public boolean cancelReservations(String reservationCode, Integer current_user_ID) {
         Reservation reservation = this.getReservationByCode(reservationCode);
 
-        if(reservation != null) {
-            if(!reservation.getCreatedBy().equals(current_user_ID)) {
-                throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!" );
+        if (reservation != null) {
+            if (!reservation.getCreatedBy().equals(current_user_ID)) {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " does not match with you!");
             }
 
-            if(reservation.getStatus().equals(ReservationStatus.Cancel)) {
-                throw new NotAcceptableException("Reservation code " + reservationCode + " is canceled!" );
+            if (reservation.getStatus().equals(ReservationStatus.Cancel)) {
+                throw new NotAcceptableException("Reservation code " + reservationCode + " is canceled!");
             }
             this.ticketService.removeTicket(reservationCode);
             reservation.setStatus(ReservationStatus.Cancel);
             this.reservationRepository.save(reservation);
             return true;
-        }
-        else {
-            throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!" );
+        } else {
+            throw new NotAcceptableException("Reservation code " + reservationCode + " does not found!");
         }
     }
 
     private String generateReservationCode() {
         String AB = RESERVATION_CODE_STRING;
         SecureRandom rnd = new SecureRandom();
-        StringBuilder sb = new StringBuilder( RESERVATION_CODE_LENGTH );
-        for( int i = 0; i < RESERVATION_CODE_LENGTH; i++ )
-            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        StringBuilder sb = new StringBuilder(RESERVATION_CODE_LENGTH);
+        for (int i = 0; i < RESERVATION_CODE_LENGTH; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
 
         String code = sb.toString();
 
-        if(this.getReservationByCode(code) != null)
+        if (this.getReservationByCode(code) != null)
             this.generateReservationCode();
 
         return code;
@@ -154,14 +154,15 @@ public class ReservationServiceImp implements ReservationService {
     public List<Reservation> viewReservations() {
         return toList(reservationRepository.findAll());
     }
+
     public static <T> List<T> toList(final Iterable<T> iterable) {
         return StreamSupport.stream(iterable.spliterator(), false)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Reservation> getReservationsByPassengerId(Integer id) {
-        return reservationRepository.findByPassenger_Id(id);
+    public List<PassengerReservationsResponse> getReservationsByPassengerId(Integer id) {
+        return reservationRepository.findByPassenger_Id(id).stream().map(PassengerReservationsMapper::mapToPassengerReservationsResponse).collect(Collectors.toList());
     }
 
 
