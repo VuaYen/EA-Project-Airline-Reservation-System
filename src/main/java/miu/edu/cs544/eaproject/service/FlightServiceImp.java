@@ -8,8 +8,10 @@ import miu.edu.cs544.eaproject.repository.AirlineRepository;
 import miu.edu.cs544.eaproject.repository.AirportRepository;
 import miu.edu.cs544.eaproject.repository.FlightRepository;
 import miu.edu.cs544.eaproject.service.mapper.FlightMapper;
+import miu.edu.cs544.eaproject.service.mapper.FlightsAirlineMapper;
 import miu.edu.cs544.eaproject.service.request.FlightCreateRequest;
 import miu.edu.cs544.eaproject.service.response.FlightResponse;
+import miu.edu.cs544.eaproject.service.response.FlightsAirlineResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -105,11 +107,13 @@ public class FlightServiceImp implements FlightService {
 
     @Override
     public Flight getFlightEntityById(Integer flightId) {
-        return flightRepository.findById(flightId).get();
+        if(flightRepository.findById(flightId).isPresent())
+            return flightRepository.findById(flightId).get();
+        return null;
     }
 
     @Override
-    public List<FlightResponse> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime) {
-        return flightRepository.findFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(departureAirportCode, arivalAirportCode, departureTime).stream().map(FlightMapper::mapToFlightResponse).collect(Collectors.toList());
+    public List<FlightsAirlineResponse> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime) {
+        return flightRepository.findFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(departureAirportCode, arivalAirportCode, departureTime).stream().map(FlightsAirlineMapper::mapToFlightsAirlineResponse).collect(Collectors.toList());
     }
 }

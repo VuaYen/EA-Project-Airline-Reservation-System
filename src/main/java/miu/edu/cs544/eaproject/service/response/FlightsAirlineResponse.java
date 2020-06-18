@@ -6,17 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class AirlineResponse implements Serializable {
+public class FlightsAirlineResponse implements Serializable {
     private Integer id;
-
-    private String code;
-
-    private String name;
-
-    private String history;
+    private String number;
+    private Integer capacity;
+    private AirlineResponse airline;
+    private Date arivalTime;
 }

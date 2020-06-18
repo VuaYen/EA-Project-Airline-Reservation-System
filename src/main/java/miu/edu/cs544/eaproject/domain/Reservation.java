@@ -29,6 +29,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "passenger_id")
+    @JsonIgnore
     private Passenger passenger;
 
     @Column(name = "created_by", columnDefinition = "bigint unsigned")

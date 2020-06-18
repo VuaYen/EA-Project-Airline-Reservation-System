@@ -1,6 +1,8 @@
+server:
+  port: 8082
 spring:
   application:
-    name: sample-springdata-service
+    name: reservation-service
     admin:
       enabled: false
   datasource:
@@ -20,3 +22,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+
+user-service: user-service
