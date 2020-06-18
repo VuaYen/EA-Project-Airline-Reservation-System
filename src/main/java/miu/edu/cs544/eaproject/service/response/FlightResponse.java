@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import miu.edu.cs544.eaproject.domain.Airport;
-import miu.edu.cs544.eaproject.repository.AirlineRepository;
 
 import java.io.Serializable;
 import java.util.Date;

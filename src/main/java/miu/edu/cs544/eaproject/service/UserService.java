@@ -4,4 +4,5 @@ import miu.edu.cs544.eaproject.service.response.UserResponse;
 
 public interface UserService {
         public UserResponse getCurrentUser();
+        public Integer getCurrentUserId();
 }
