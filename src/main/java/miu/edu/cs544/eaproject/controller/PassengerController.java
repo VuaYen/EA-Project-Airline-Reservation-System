@@ -5,6 +5,7 @@ import miu.edu.cs544.eaproject.service.*;
 import miu.edu.cs544.eaproject.service.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("passengers")
-//@PreAuthorize("hasRole('ROLE_PASSENGER')")
+@PreAuthorize("hasAnyRole('PASSENGER')")
 public class PassengerController {
     @Autowired
     private AirportService airportService;

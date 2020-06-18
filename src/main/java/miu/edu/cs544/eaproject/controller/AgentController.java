@@ -6,6 +6,7 @@ import miu.edu.cs544.eaproject.domain.*;
 import miu.edu.cs544.eaproject.service.*;
 import miu.edu.cs544.eaproject.service.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("agents")
-//@PreAuthorize("hasRole('ROLE_AGENT')")
+@PreAuthorize("hasAnyRole('AGENT')")
 public class AgentController {
     @Autowired
     private AirportService airportService;
@@ -105,6 +106,4 @@ public class AgentController {
     public List<PassengerAndReservationsResponse> findPassengersAndReservationsCreatedByAgentId(@PathVariable Integer id) {
         return passengerService.getPassengersAndReservationsByReservationsCreatedBy(id);
     }
-
-
 }
