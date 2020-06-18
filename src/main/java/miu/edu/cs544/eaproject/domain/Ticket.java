@@ -31,6 +31,7 @@ public class Ticket {
     @ManyToOne
     private Flight flight;
 
-    @Column(name = "passenger_ID", columnDefinition = "bigint unsigned")
-    private Integer passengerID;
+    @ManyToOne
+    @JoinColumn(name = "passenger_id")
+    private Passenger passenger;
 }

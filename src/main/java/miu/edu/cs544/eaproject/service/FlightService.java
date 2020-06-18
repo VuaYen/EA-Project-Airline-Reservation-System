@@ -21,5 +21,7 @@ public interface FlightService {
 
     FlightResponse getFlightById(Integer flightId);
 
+    Flight getFlightEntityById(Integer flightId);
+
     List<FlightResponse> getFlightsByDepartureAirportCodeAndArivalAirportCodeAndDepartureTimeEquals(String departureAirportCode, String arivalAirportCode, Date departureTime);
 }
