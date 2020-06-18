@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("passengers")
-//@Secured({"ROLE_PASSENGER", "ROLE_AGENT", "ROLE_ADMIN"})
+@Secured({"ROLE_PASSENGER", "ROLE_AGENT", "ROLE_ADMIN"})
 public class PassengerController {
     @Autowired
     private AirportService airportService;
