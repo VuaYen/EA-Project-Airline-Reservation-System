@@ -21,8 +21,6 @@ target/
 .mvn/
 mvnw
 mvnw.cmd
-META-INF
-.DS_Store
 
 ### NetBeans ###
 /nbproject/private/
@@ -35,4 +33,3 @@ build/
 ### VS Code ###
 .vscode/
 /domain.uml
-docker/
